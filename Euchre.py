@@ -36,9 +36,21 @@ def validMove(player_hand, trick):
 	
 	Given a list of the players hand, and the trick information.
 	"""
-	pass
+	for x in player_hand:
+		if x.suit == trick.lead:
+			break
+	else:
+		return tuple(player_hand)
+		
+	
 	
 class Card(object):
-	def __init__(self, suit, number):
+	def __init__(self, suit, num):
 		self.suit = suit
-		self.number = number
+		self.num = num
+		
+	def __str__(self):
+		return str(self.suit) + str(self.num)
+
+	def __repr__(self):
+		return self.__str__()
