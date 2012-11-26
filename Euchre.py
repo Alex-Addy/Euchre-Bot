@@ -26,9 +26,6 @@ def main():
 	deck = list(allcards[:]) # shallow copy of allcards that gives you a regular list
 	
 	pass
-	
-if __name__ == "__main__":
-	pass
 
 def validMove(player_hand, trick):
 	"""
@@ -38,11 +35,8 @@ def validMove(player_hand, trick):
 	"""
 	for x in player_hand:
 		if x.suit == trick.lead:
-			break
-	else:
-		return tuple(player_hand)
-		
-	
+			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
+	return tuple(player_hand)
 	
 class Card(object):
 	def __init__(self, suit, num):
@@ -54,3 +48,7 @@ class Card(object):
 
 	def __repr__(self):
 		return self.__str__()
+		
+if __name__ == "__main__":
+	pass
+	
