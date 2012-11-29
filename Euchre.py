@@ -38,6 +38,9 @@ def validMove(player_hand, trick):
 			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
 	return tuple(player_hand)
 	
+def trickWinner(trick):
+	pass
+	
 class Card(object):
 	def __init__(self, suit, num):
 		self.suit = suit
