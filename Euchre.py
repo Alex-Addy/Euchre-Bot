@@ -81,6 +81,16 @@ class Card(object):
 	def __repr__(self):
 		return self.__str__()
 		
+class Trick(object):
+	def __init__(self, center = {}, caller = None, lead = None, trump = None):
+		self.center = center
+		self.caller = caller
+		self.lead = lead
+		self.trump = trump
+	
+	def __repr__(self):
+		return "Trick(%r)" % (self.__dict)
+		
 if __name__ == "__main__":
 	pass
 	
