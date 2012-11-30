@@ -38,8 +38,17 @@ def validMove(player_hand, trick):
 			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
 	return tuple(player_hand)
 	
-def trickWinner(trick):
-	pass
+def winningCard(trick):
+	temp = [(x, curCardVal(x, trick)) for x in trick.center]
+	best = temp[0][1]
+	bext_x = 0
+	
+	for x in range(1, len(temp)):
+		if temp[x][1] > best:
+			best = temp[x][1]
+			best_x = x
+	
+	return temp[x][0]
 
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
