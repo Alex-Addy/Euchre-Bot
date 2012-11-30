@@ -76,10 +76,13 @@ class Card(object):
 		self.num = num
 		
 	def __str__(self):
-		return str(self.suit) + str(self.num)
+		if self.num > 10:
+			return list("Jack", "Queen", "King", "Ace")[self.num - 11] + "|" + self.suit
+		else:
+			return str(self.num) + "|" + self.suit
 
 	def __repr__(self):
-		return self.__str__()
+		return "Card(%r)" % (self.__dict)
 		
 class Trick(object):
 	def __init__(self, center = {}, caller = None, lead = None, trump = None):
