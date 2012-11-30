@@ -40,6 +40,19 @@ def validMove(player_hand, trick):
 	
 def trickWinner(trick):
 	pass
+
+def offSuit(trump_suit):
+	"""
+	Takes a suit and returns what the off hand suit would be.
+	"""
+	if trump_suit == heart:
+		return diamond
+	elif trump_suit == diamond:
+		return heart
+	elif trump_suit == spade:
+		return club
+	else:
+		return spade
 	
 class Card(object):
 	def __init__(self, suit, num):
