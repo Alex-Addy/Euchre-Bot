@@ -24,17 +24,6 @@ def main():
 	deck = list(allcards[:]) # shallow copy of allcards that gives you a regular list
 	
 	pass
-
-def validMove(player_hand, trick):
-	"""
-	Returns a tuple of cards that the player can play.
-	
-	Given a list of the players hand, and the trick information.
-	""" # not complete yet
-	for x in player_hand:
-		if x.suit == trick.lead:
-			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
-	return tuple(player_hand)
 	
 def winningCard(trick):
 	temp = [(x, curCardVal(x, trick)) for x in trick.center]
