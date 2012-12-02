@@ -1,4 +1,5 @@
 import random
+from euchre_classes import *
 
 heart = "h"
 spade = "s"
@@ -18,10 +19,7 @@ def main():
 	team1.tricks = 0
 	team2.tricks = 0
 	
-	trick.center = {} # dict to hold information about the cards in play for the current trick of the form {card:player}
-	trick.caller = None # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
-	trick.lead = None # the first card played
-	trick.trump = None
+	cur_trick = Trick()
 	
 	deck = list(allcards[:]) # shallow copy of allcards that gives you a regular list
 	
@@ -78,30 +76,6 @@ def offSuit(trump_suit):
 		return club
 	else:
 		return spade
-	
-class Card(object):
-	def __init__(self, suit, num):
-		self.suit = suit
-		self.num = num
-		
-	def __str__(self):
-		if self.num > 10:
-			return list("Jack", "Queen", "King", "Ace")[self.num - 11] + "|" + self.suit
-		else:
-			return str(self.num) + "|" + self.suit
-
-	def __repr__(self):
-		return "Card(%r)" % (self.__dict)
-		
-class Trick(object):
-	def __init__(self, center = {}, caller = None, lead = None, trump = None):
-		self.center = center
-		self.caller = caller
-		self.lead = lead
-		self.trump = trump
-	
-	def __repr__(self):
-		return "Trick(%r)" % (self.__dict)
 		
 if __name__ == "__main__":
 	pass
