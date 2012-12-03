@@ -63,17 +63,15 @@ def isValidMove(card, trick):
                 return false
         return true
 
-    
-    """
-        
-    if card is left bower:
-        if player has no cards of lead suit:
-            return true
-        else:
-            return false
-    """    
-    return true
-    
+    if card.num == 11 and card.suit == offSuit(trick.trump):
+        # card is left bower
+        for x in player_hand:
+            if x.suit == trick.lead.suit:
+                # player's hand still contains other cards of lead suit
+                return false
+        return true
+       
+    return true    
 
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
