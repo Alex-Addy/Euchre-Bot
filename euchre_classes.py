@@ -1,15 +1,16 @@
 class Player(object):
-	def __init__(self, name, ai = None):
+	def __init__(self, name, partner, ai = None):
 		# stats for a player, can have more and make them persistent
 		self.name = name
 		self.tricks = 0
 		self.hand = []
+		self.partner = partner
 		self.ai = ai
 	
 	def getMove(self, cur_trick):
 		# get a move from the player, whether that is an ai or real player
 		if ai:
-			pass
+			ai.move(self.hand, cur_trick)
 		else:
 			self.printHand()
 			move = input("Please enter the # of the card you wish to play: ")
@@ -23,6 +24,9 @@ class Player(object):
 		for x in range(len(hand)):
 			print(x, ": ", hand[x], end=" ")
 		print()
+		
+	def orderUp(self, center_card, dealer):
+		pass
 
 def validMoves(player_hand, trick):
 	"""
@@ -34,6 +38,19 @@ def validMoves(player_hand, trick):
 		if x.suit == trick.lead:
 			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
 	return tuple(player_hand)
+	
+class Round(object):
+	def __init__(self):
+		pass
+		
+	def dealCards(self, deck, players, dealer):
+		pass
+		
+	def orderUpDealer(self, players, dealer):
+		pass
+		
+	def pickSuit(self, players, out_suit):
+		pass
 	
 class Trick(object):
 	def __init__(self, center = {}, caller = None, lead = None):
