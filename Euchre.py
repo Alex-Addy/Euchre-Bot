@@ -38,10 +38,12 @@ def winningCard(trick):
 	return temp[x][0]
 
 def isValidMove(card, trick):
+    """
+    Changing the lead suit to trump may cause issues to arise
+    """
     if trick.lead.num == 11 and trick.lead.suit == offSuit(trick.trump):
         # lead is left bower
-        # trump becomes lesd
-        pass
+        trick.lead.suit = trump
     
     if card.suit != trick.lead.suit:
         # card is not of lead suit
