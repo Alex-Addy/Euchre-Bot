@@ -1,3 +1,5 @@
+import random
+
 class Player(object):
 	def __init__(self, name, partner, opponents, ai = None):
 		# stats for a player, can have more and make them persistent
@@ -35,9 +37,10 @@ class Player(object):
 class Round(object):
 	def __init__(self, all_cards, players, dealer):
 		self.deck = all_cards[:] # get a deep copy of all_cards for dealing
+		pass
 		
-		
-	def dealCards(self, deck, players, dealer):
+	def dealCards(self, players, dealer):
+		self.deck = random.shuffle(self.deck)
 		pass
 		
 	def orderUpDealer(self, players, dealer):

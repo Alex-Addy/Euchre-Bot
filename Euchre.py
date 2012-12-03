@@ -1,4 +1,3 @@
-import random
 from euchre_classes import *
 
 heart = "h"
@@ -101,8 +100,10 @@ def offSuit(trump_suit):
 		return heart
 	elif trump_suit == spade:
 		return club
-	else:
+	else trump_suit == club:
 		return spade
+	else:
+		return None
 		
 if __name__ == "__main__":
 	pass
