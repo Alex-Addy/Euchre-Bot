@@ -37,6 +37,44 @@ def winningCard(trick):
 	
 	return temp[x][0]
 
+def isValidMove(card, trick):
+    """
+    Changing the lead suit to trump may cause issues to arise
+    """
+    if trick.lead.num == 11 and trick.lead.suit == offSuit(trick.trump):
+        # lead is left bower
+        trick.lead.suit = trump
+    
+    if card.suit != trick.lead.suit:
+        # card is not of lead suit
+        if trick.lead.suit == trick.trump:
+            #lead suit is trump
+            
+            if card.num == 11 and card.suit == offSuit(trick.trump):
+                # card is left bower and move is still valid
+                return true
+            for x in player_hand:
+                if x.suit == trick.lead.suit or (x.num == 11 and card.suit == offSuit(trick.trump)):
+                    # player's hand either contains other cards of lead suit or the left bower.
+                    return false
+            return true
+
+        for x in player_hand:
+            if x.suit == trick.lead.suit:
+                # player's hand still contains other cards of lead suit
+                return false
+        return true
+
+    if card.num == 11 and card.suit == offSuit(trick.trump):
+        # card is left bower
+        for x in player_hand:
+            if x.suit == trick.lead.suit:
+                # player's hand still contains other cards of lead suit
+                return false
+        return true
+       
+    return true    
+
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
 		if card.num == 11: # card is right bower
