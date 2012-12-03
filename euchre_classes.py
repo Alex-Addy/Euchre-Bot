@@ -29,12 +29,22 @@ def validMoves(player_hand, trick):
 	Returns a tuple of cards that the player can play.
 	
 	Given a list of the players hand, and the trick information.
-	""" # not complete yet
+	"""
 	for x in player_hand:
 		if x.suit == trick.lead:
 			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
 	return tuple(player_hand)
-			
+	
+class Trick(object):
+	def __init__(self, center = {}, caller = None, lead = None):
+		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
+		self.caller = caller # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
+		self.lead = lead # the first card played
+		self.trump = trump # the suit that is trump
+	
+	def __repr__(self):
+		return "Trick(%r)" % (self.__dict)
+	
 class Card(object):
 	def __init__(self, suit, num):
 		self.suit = suit
@@ -48,13 +58,3 @@ class Card(object):
 
 	def __repr__(self):
 		return "Card(%r)" % (self.__dict)
-		
-class Trick(object):
-	def __init__(self, center = {}, caller = None, lead = None, trump = None):
-		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
-		self.caller = caller # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
-		self.lead = lead # the first card played
-		self.trump = trump # the suit that is trump
-	
-	def __repr__(self):
-		return "Trick(%r)" % (self.__dict)

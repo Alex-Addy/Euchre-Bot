@@ -6,12 +6,12 @@ spade = "s"
 diamond = "d"
 club = "c"
 
+# a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
+allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
+
 def main():
 
 	random.seed() # uses the system time by default
-
-	# a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
-	allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
 	
 	# create team objects to hold information about the teams
 	team1.score = 0
@@ -25,7 +25,7 @@ def main():
 	
 	pass
 	
-def winningCard(trick):
+def winningCard(trick, trump):
 	temp = [(x, curCardVal(x, trick)) for x in trick.center]
 	best = temp[0][1]
 	bext_x = 0
@@ -52,18 +52,18 @@ def isValidMove(card, trick):
             
             if card.num == 11 and card.suit == offSuit(trick.trump):
                 # card is left bower and move is still valid
-                return true
+                return True
             for x in player_hand:
                 if x.suit == trick.lead.suit or (x.num == 11 and card.suit == offSuit(trick.trump)):
                     # player's hand either contains other cards of lead suit or the left bower.
-                    return false
-            return true
+                    return False
+            return True
 
         for x in player_hand:
             if x.suit == trick.lead.suit:
                 # player's hand still contains other cards of lead suit
-                return false
-        return true
+                return False
+        return True
 
     if card.num == 11 and card.suit == offSuit(trick.trump):
         # card is left bower
@@ -71,9 +71,9 @@ def isValidMove(card, trick):
             if x.suit == trick.lead.suit:
                 # player's hand still contains other cards of lead suit
                 return false
-        return true
+        return True
        
-    return true    
+    return True
 
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
