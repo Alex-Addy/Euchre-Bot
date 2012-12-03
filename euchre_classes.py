@@ -1,16 +1,17 @@
 class Player(object):
-	def __init__(self, name, partner, ai = None):
+	def __init__(self, name, partner, opponents, ai = None):
 		# stats for a player, can have more and make them persistent
 		self.name = name
 		self.tricks = 0
 		self.hand = []
 		self.partner = partner
+		self.opponents = opponents
 		self.ai = ai
 	
-	def getMove(self, cur_trick):
+	def getMove(self, Round):
 		# get a move from the player, whether that is an ai or real player
 		if ai:
-			ai.move(self.hand, cur_trick)
+			ai.move(self.hand, Round)
 		else:
 			self.printHand()
 			move = input("Please enter the # of the card you wish to play: ")
@@ -27,21 +28,14 @@ class Player(object):
 		
 	def orderUp(self, center_card, dealer):
 		pass
-
-def validMoves(player_hand, trick):
-	"""
-	Returns a tuple of cards that the player can play.
-	
-	Given a list of the players hand, and the trick information.
-	"""
-	for x in player_hand:
-		if x.suit == trick.lead:
-			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
-	return tuple(player_hand)
+		
+	def pickSuit(self, out_suit):
+		pass
 	
 class Round(object):
-	def __init__(self):
-		pass
+	def __init__(self, all_cards, players, dealer):
+		self.deck = all_cards[:] # get a deep copy of all_cards for dealing
+		
 		
 	def dealCards(self, deck, players, dealer):
 		pass
@@ -49,15 +43,16 @@ class Round(object):
 	def orderUpDealer(self, players, dealer):
 		pass
 		
-	def pickSuit(self, players, out_suit):
+	def pickSuitSec(self, players, out_suit):
 		pass
+		
+	def
 	
 class Trick(object):
 	def __init__(self, center = {}, caller = None, lead = None):
 		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
 		self.caller = caller # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
 		self.lead = lead # the first card played
-		self.trump = trump # the suit that is trump
 	
 	def __repr__(self):
 		return "Trick(%r)" % (self.__dict)

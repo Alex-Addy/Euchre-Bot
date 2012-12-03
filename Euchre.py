@@ -70,7 +70,7 @@ def isValidMove(card, trick):
         for x in player_hand:
             if x.suit == trick.lead.suit:
                 # player's hand still contains other cards of lead suit
-                return false
+                return False
         return True
        
     return True
