@@ -5,6 +5,7 @@
 # orderUp(self, center_card, dealer)
 # pickSuit(self, out_suit)
 # reset(self)
+# setHand(self, new-hand)
 
 heart = "h"
 spade = "s"
@@ -14,7 +15,7 @@ club = "c"
 import random
 random.seed(time)
 
-class RandomPlay():
+class RandomPlay(BasePlayer):
 	def __init__(self):
 		self.name = name # name is a unique identifier
 		self.tricks = 0
@@ -89,7 +90,19 @@ class RealPlayer():
 		pass
 
 	def orderUp(self, center_card, dealer):
-		pass
+		if self = dealer:
+			self.dealerPickUp(self, center_card) # is this what I want
+			
+		self.printHand()
+		while(True):
+			choice = raw_input("Do you want to order the dealer up? ")
+			choice = choice.lower()
+			if choice == "y" or choice == "yes":
+				return True
+			elif choice == "n" or choice == "no":
+				return False
+			else:
+				print("Please enter yes or no.")
 
 	def pickSuit(self, out_suit):
 		pass
@@ -99,22 +112,28 @@ class RealPlayer():
 		pass
 
 # utility functions for the AIs to use
+
+class BasePlayer():
+	def __init__(self, name)
+		self.name = name # name is a unique identifier
+		self.tricks = 0
+		self.hand = []
 		
-def printHand(hand):
-	for x in range(len(hand)):
-		print(x, ": ", hand[x], end=" ")
-	print()
-	
-def validMoves(hand, trick):
-    """
-    Changing the lead suit to trump may cause issues to arise
-    """
-    # assume that the lead, left bower problem is taken care of
-	validmoves = []
-	for x in hand:
-		if x.num == 11:
-			if lead == trump and x.suit == offSuit(trump):
-				validmove.append(x)
-		elif x.suit == lead:
-			validmoves.append(x)
-	return tuple(validmoves)
+	def printHand(hand):
+		for x in range(len(hand)):
+			print(x, ": ", hand[x], end=" ")
+		print()
+		
+	def validMoves(hand, trick):
+		"""
+		Changing the lead suit to trump may cause issues to arise
+		"""
+		# assume that the lead, left bower problem is taken care of
+		validmoves = []
+		for x in hand:
+			if x.num == 11:
+				if lead == trump and x.suit == offSuit(trump):
+					validmove.append(x)
+			elif x.suit == lead:
+				validmoves.append(x)
+		return tuple(validmoves)

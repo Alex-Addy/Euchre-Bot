@@ -1,15 +1,15 @@
-
-
 class Round(object):
 	def __init__(self, all_cards, players, dealer):
-		self.deck = all_cards[:] # get a deep copy of all_cards for dealing
+		self.deck = None # get a deep copy of all_cards for dealing
+		self.trump = None
 		pass
 		
 	def dealCards(self, players, dealer):
-		self.deck = random.shuffle(self.deck)
+		self.deck = allcards[:]
+		random.shuffle(self.deck) # mutates deck
 		pass
 		
-	def orderUpDealer(self, players, dealer):
+	def orderUpDealerSec(self, players, dealer):
 		pass
 		
 	def pickSuitSec(self, players, out_suit):
@@ -20,7 +20,6 @@ class Trick(object):
 		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
 		self.caller = caller # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
 		self.lead = lead # the first card played
-		self.trump = trump # the suit that is trump
 	
 	def __repr__(self):
 		return "Trick(%r)" % (self.__dict)
