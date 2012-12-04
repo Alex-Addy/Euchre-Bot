@@ -1,10 +1,18 @@
 import random
 from euchre_classes import *
+import AIs
 
-heart = "h"
-spade = "s"
-diamond = "d"
-club = "c"
+
+if True: # black characters
+	heart = u"\u2665"
+	spade = u"\u2660"
+	diamond = u"\u2666"
+	club = u"\u2663"
+else:
+	heart = u"\u2661"
+	spade = u"\u2664"
+	diamond = u"\u2662"
+	club = u"\u2667"
 
 # a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
 allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
@@ -14,16 +22,25 @@ def main():
 	random.seed() # uses the system time by default
 	
 	# create team objects to hold information about the teams
-	team1.score = 0
-	team2.score = 0
-	team1.tricks = 0
-	team2.tricks = 0
+	team1_score = 0
+	team2_score = 0
 	
 	cur_trick = Trick()
 	
 	deck = list(allcards[:]) # shallow copy of allcards that gives you a regular list
 	
-	pass
+	players = (AIs.RandomPlay("R1"), AIs.RandomPlay("R2"), AIs.RandomPlay("R3"), AIs.RandomPlay("R4"))
+	team1 = [0, 1]
+	team2 = [2, 3]
+	dealer = 0
+	
+	while(team1_score < 10 and team2_score < 10):
+		cur_round = Round(
+		
+	if team1_score == 10:
+		pass
+	else:
+		pass
 	
 def winningCard(trick, trump):
 	temp = [(x, curCardVal(x, trick)) for x in trick.center]
@@ -36,7 +53,6 @@ def winningCard(trick, trump):
 			best_x = x
 	
 	return temp[x][0]
-
 
 
 def curCardVal(card, trick):

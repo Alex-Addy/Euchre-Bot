@@ -16,11 +16,6 @@ import random
 random.seed(time)
 
 class RandomPlay(BasePlayer):
-	def __init__(self):
-		self.name = name # name is a unique identifier
-		self.tricks = 0
-		self.hand = []
-		
 	def playCard(self, cur_trick, trump):
 		moves = validMoves(self.hand, trick)
 		chosen = random.choice(moves)
@@ -52,7 +47,7 @@ class SimpleStat():
 		
 	def playCard(self, cur_trick, trump):
 		pass
-		
+
 	def updateInfo(self, finished_trick, trump):
 		pass
 
@@ -61,7 +56,7 @@ class SimpleStat():
 
 	def pickSuit(self, out_suit):
 		pass
-		
+
 	def reset(self):
 		"""Reset the information gathered by the ai without reinstatiating it.
 		
@@ -137,3 +132,11 @@ class BasePlayer():
 			elif x.suit == lead:
 				validmoves.append(x)
 		return tuple(validmoves)
+		
+	def setHand(self, hand):
+		if len(hand) == 5:
+			self.hand == hand
+			return True
+		else:
+			return False
+			

@@ -1,13 +1,22 @@
 class Round(object):
-	def __init__(self, all_cards, players, dealer):
+	def __init__(self, all_cards, players, team1, team2, dealer):
 		self.deck = None # get a deep copy of all_cards for dealing
 		self.trump = None
-		pass
+		self.dealCards(players, dealer, allcards)
 		
-	def dealCards(self, players, dealer):
+	def dealCards(self, players, dealer, allcards):
 		self.deck = allcards[:]
 		random.shuffle(self.deck) # mutates deck
-		pass
+		
+		hand1 = deck[:5]
+		deck =  deck[5:]
+		hand2 = deck[:5]
+		deck = deck[5:]
+		hand3 = hand[:3]
+		del hand[:3]
+		hand4 = hand[:2]
+		del hand[:2]
+		
 		
 	def orderUpDealerSec(self, players, dealer):
 		pass
