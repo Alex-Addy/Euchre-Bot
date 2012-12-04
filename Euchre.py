@@ -37,19 +37,7 @@ def winningCard(trick, trump):
 	
 	return temp[x][0]
 
-def validMoves(hand, trick):
-    """
-    Changing the lead suit to trump may cause issues to arise
-    """
-    # assume that the lead, left bower problem is taken care of
-	validmoves = []
-	for x in hand:
-		if x.num == 11:
-			if lead == trump and x.suit == offSuit(trump):
-				validmove.append(x)
-		elif x.suit == lead:
-			validmoves.append(x)
-	return tuple(validmoves)
+
 
 def curCardVal(card, trick):
 	if card.suit == trick.trump:

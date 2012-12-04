@@ -1,37 +1,4 @@
-class Player(object):
-	def __init__(self, name, ai = None):
-		# stats for a player, can have more and make them persistent
-		self.name = name
-		self.tricks = 0
-		self.hand = []
-		self.ai = ai
-	
-	def getMove(self, cur_trick, trump, my_score, their_score):
-		# get a move from the player, whether that is an ai or real player
-		if self.ai:
-			self.ai.playCard(self.hand, cur_trick, trump, score, my_score, their_score)
-		else:
-			self.printHand()
-			move = input("Please enter the # of the card you wish to play: ")
-			while(True):
-				if move is int and 0 <= move < len(hand) and hand[move] in validMoves(self.hand, cur_trick):
-					return move
-				else:
-					move = input("Please enter a valid move: ")
 
-	def whoMoved(self, player, card_played, cur_trick):
-		pass
-	
-	def printHand(self):
-		for x in range(len(hand)):
-			print(x, ": ", hand[x], end=" ")
-		print()
-
-	def orderUp(self, center_card, dealer):
-		pass
-
-	def pickSuit(self, out_suit):
-		pass
 
 class Round(object):
 	def __init__(self, all_cards, players, dealer):
