@@ -1,3 +1,4 @@
+import random
 from euchre_classes import *
 
 heart = "h"
@@ -36,43 +37,19 @@ def winningCard(trick, trump):
 	
 	return temp[x][0]
 
-def isValidMove(card, trick):
+def validMoves(hand, trick):
     """
     Changing the lead suit to trump may cause issues to arise
     """
-    if trick.lead.num == 11 and trick.lead.suit == offSuit(trick.trump):
-        # lead is left bower
-        trick.lead.suit = trump
-    
-    if card.suit != trick.lead.suit:
-        # card is not of lead suit
-        if trick.lead.suit == trick.trump:
-            #lead suit is trump
-            
-            if card.num == 11 and card.suit == offSuit(trick.trump):
-                # card is left bower and move is still valid
-                return True
-            for x in player_hand:
-                if x.suit == trick.lead.suit or (x.num == 11 and card.suit == offSuit(trick.trump)):
-                    # player's hand either contains other cards of lead suit or the left bower.
-                    return False
-            return True
-
-        for x in player_hand:
-            if x.suit == trick.lead.suit:
-                # player's hand still contains other cards of lead suit
-                return False
-        return True
-
-    if card.num == 11 and card.suit == offSuit(trick.trump):
-        # card is left bower
-        for x in player_hand:
-            if x.suit == trick.lead.suit:
-                # player's hand still contains other cards of lead suit
-                return False
-        return True
-       
-    return True
+    # assume that the lead, left bower problem is taken care of
+	validmoves = []
+	for x in hand:
+		if x.num == 11:
+			if lead == trump and x.suit == offSuit(trump):
+				validmove.append(x)
+		elif x.suit == lead:
+			validmoves.append(x)
+	return tuple(validmoves)
 
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
@@ -84,7 +61,6 @@ def curCardVal(card, trick):
 	elif card.num == 11 and card.suit == offSuit(trick.trump):
 		# card is left bower
 		return card.num + 14
-		
 	elif card.suit == trick.lead:
 		return card.num
 	else:
@@ -100,10 +76,8 @@ def offSuit(trump_suit):
 		return heart
 	elif trump_suit == spade:
 		return club
-	else trump_suit == club:
-		return spade
 	else:
-		return None
+		return spade
 		
 if __name__ == "__main__":
 	pass
