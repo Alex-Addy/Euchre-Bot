@@ -6,10 +6,10 @@ class Player(object):
 		self.hand = []
 		self.ai = ai
 	
-	def getMove(self, cur_trick):
+	def getMove(self, cur_trick, trump, my_score, their_score):
 		# get a move from the player, whether that is an ai or real player
-		if ai:
-			pass
+		if self.ai:
+			self.ai.playCard(self.hand, cur_trick, trump, score, my_score, their_score)
 		else:
 			self.printHand()
 			move = input("Please enter the # of the card you wish to play: ")
@@ -18,22 +18,35 @@ class Player(object):
 					return move
 				else:
 					move = input("Please enter a valid move: ")
+
+	def whoMoved(self, player, card_played, cur_trick):
+		pass
 	
 	def printHand(self):
 		for x in range(len(hand)):
 			print(x, ": ", hand[x], end=" ")
 		print()
 
-def validMoves(player_hand, trick):
-	"""
-	Returns a tuple of cards that the player can play.
-	
-	Given a list of the players hand, and the trick information.
-	"""
-	for x in player_hand:
-		if x.suit == trick.lead:
-			return tuple(filter(lambda c: c.suit == trick.lead, player_hand)
-	return tuple(player_hand)
+	def orderUp(self, center_card, dealer):
+		pass
+
+	def pickSuit(self, out_suit):
+		pass
+
+class Round(object):
+	def __init__(self, all_cards, players, dealer):
+		self.deck = all_cards[:] # get a deep copy of all_cards for dealing
+		pass
+		
+	def dealCards(self, players, dealer):
+		self.deck = random.shuffle(self.deck)
+		pass
+		
+	def orderUpDealer(self, players, dealer):
+		pass
+		
+	def pickSuitSec(self, players, out_suit):
+		pass
 	
 class Trick(object):
 	def __init__(self, center = {}, caller = None, lead = None):
