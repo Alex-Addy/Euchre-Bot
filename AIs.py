@@ -16,6 +16,9 @@ import random
 random.seed(time)
 
 class RandomPlay(BasePlayer):
+	def __init__(self, name):
+		super(BasePlayer, self).__init__(name)
+
 	def playCard(self, cur_trick, trump):
 		moves = validMoves(self.hand, trick)
 		chosen = random.choice(moves)
@@ -40,10 +43,8 @@ class RandomPlay(BasePlayer):
 		pass
 
 class SimpleStat():
-	def __init__(self):
-		self.name = name
-		self.tricks = 0
-		self.hand = []
+	def __init__(self, name):
+		super(BasePlayer, self).__init__(name)
 		
 	def playCard(self, cur_trick, trump):
 		pass
@@ -85,7 +86,7 @@ class RealPlayer():
 		pass
 
 	def orderUp(self, center_card, dealer):
-		if self = dealer:
+		if self == dealer:
 			self.dealerPickUp(self, center_card) # is this what I want
 			
 		self.printHand()
@@ -109,17 +110,17 @@ class RealPlayer():
 # utility functions for the AIs to use
 
 class BasePlayer():
-	def __init__(self, name)
+	def __init__(self, name):
 		self.name = name # name is a unique identifier
 		self.tricks = 0
 		self.hand = []
 		
-	def printHand(hand):
-		for x in range(len(hand)):
-			print(x, ": ", hand[x], end=" ")
+	def printHand(self):
+		for x in range(len(self.hand)):
+			print(x, ":", self.hand[x], end=" ")
 		print()
 		
-	def validMoves(hand, trick):
+	def validMoves(self, trick, trump):
 		"""
 		Changing the lead suit to trump may cause issues to arise
 		"""
@@ -135,8 +136,7 @@ class BasePlayer():
 		
 	def setHand(self, hand):
 		if len(hand) == 5:
-			self.hand == hand
+			self.hand = hand
 			return True
 		else:
 			return False
-			
