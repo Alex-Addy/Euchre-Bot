@@ -31,11 +31,13 @@ class Round(object):
 	def pickSuitSec(self, players, out_suit):
 		pass
 	
-class Trick(object):
-	def __init__(self, center = {}, caller = None, lead = None):
+class Trick():
+	def __init__(self, center = {}, leader = None):
 		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
-		self.caller = caller # the player who called the current suit, by ordering the dealer up or calling the suit afterwards
-		self.lead = lead # the first card played
+		self.leader = leader # the player who will play the first card
+
+	def play(self, players):
+		pass
 	
 	def __repr__(self):
 		return "Trick(%r)" % (self.__dict)
