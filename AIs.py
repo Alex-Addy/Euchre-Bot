@@ -64,13 +64,35 @@ class SimpleStat():
 			For use between rounds.
 		"""
 		pass
+
+class SimpleRules():
+	# this ai will use arbitrary rules created by us to play the game
+	# defaulting to random play when unsure
+	def __init__(self, name):
+		super(BasePlayer, self).__init__(name)
+		
+	def playCard(self, cur_trick, trump):
+		pass
+
+	def updateInfo(self, finished_trick, trump):
+		pass
+
+	def orderUp(self, center_card, dealer):
+		pass
+
+	def pickSuit(self, out_suit):
+		pass
+
+	def reset(self):
+		"""Reset the information gathered by the ai without reinstatiating it.
+		
+			For use between rounds.
+		"""
+		pass
 		
 class RealPlayer():
 	def __init__(self, name):
-		# stats for a player, can have more and make them persistent
-		self.name = name
-		self.tricks = 0
-		self.hand = []
+		super(BasePlayer, self).__init__(name)
 	
 	def playCard(self, cur_trick, trump):
 		self.printHand()
