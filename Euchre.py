@@ -32,7 +32,7 @@ def main():
 	players = (AIs.RandomPlay("R1"), AIs.RandomPlay("R2"), AIs.RandomPlay("R3"), AIs.RandomPlay("R4"))
 	team1 = [0, 1]
 	team2 = [2, 3]
-	dealer = 0 # any reference to a player will be an index to the players tuple
+	dealer = 0 # any reference to a player will be an index to the tuple players
 	
 	while(team1_score < 10 and team2_score < 10):
 		cur_round = Round(
