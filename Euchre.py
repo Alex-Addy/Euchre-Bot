@@ -1,21 +1,9 @@
 import random
 from euchre_classes import *
+from euchre_globals import *
 import AIs
 
 
-if True: # black characters
-	heart = u"\u2665"
-	spade = u"\u2660"
-	diamond = u"\u2666"
-	club = u"\u2663"
-else: # white characters
-	heart = u"\u2661"
-	spade = u"\u2664"
-	diamond = u"\u2662"
-	club = u"\u2667"
-
-# a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
-allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
 
 def main():
 
@@ -38,9 +26,9 @@ def main():
 		cur_round = Round(
 		
 	if team1_score == 10:
-		pass
+		print("Team 1 wins!") # placeholder
 	elif team2_score == 10:
-		pass
+		print("Team 2 wins!") # placeholder
 	else:
 		pass
 	

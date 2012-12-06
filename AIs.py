@@ -7,10 +7,7 @@
 # reset(self)
 # setHand(self, new-hand)
 
-heart = "h"
-spade = "s"
-diamond = "d"
-club = "c"
+from euchre_globals import *
 
 import random
 random.seed(time)

@@ -1,11 +1,13 @@
+from euchre_globals import *
+
 class Round(object):
 	def __init__(self, all_cards, players, team1, team2, dealer):
-		self.deck = None # get a deep copy of all_cards for dealing
+		self.deck = None
 		self.trump = None
-		self.dealCards(players, dealer, allcards)
+		self.dealCards(players, dealer)
 		
-	def setUp(self, players, dealer, allcards):
-		self.dealCards(self, players, dealer, allcards)
+	def setUp(self, players, dealer):
+		self.dealCards(self, players, dealer)
 		who_ordered = self.orderUpDealer(players, dealer)
 		if who_ordered:
 			# pass message to each player about who ordered who to pick up
@@ -17,8 +19,8 @@ class Round(object):
 			# communicate who picked and what was picked to each player
 			return
 
-	def dealCards(self, players, dealer, allcards):
-		self.deck = allcards[:]
+	def dealCards(self, players, dealer):
+		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 		random.shuffle(self.deck) # mutates deck
 
 		for x in range(1, 5):
