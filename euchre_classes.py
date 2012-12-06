@@ -4,19 +4,26 @@ class Round(object):
 		self.trump = None
 		self.dealCards(players, dealer, allcards)
 		
+	def setUp(self, players, dealer, allcards):
+		self.dealCards(self, players, dealer, allcards)
+		who_ordered = self.orderUpDealer(players, dealer)
+		if who_ordered:
+			# pass message to each player about who ordered who to pick up
+			# then have dealer pick up and discard
+			return
+		else:
+			who, what = self.pickSuitSec(players, dealer)
+			# stick the dealer
+			# communicate who picked and what was picked to each player
+			return
+
 	def dealCards(self, players, dealer, allcards):
 		self.deck = allcards[:]
 		random.shuffle(self.deck) # mutates deck
-		
-		hand1 = deck[:5]
-		deck =  deck[5:]
-		hand2 = deck[:5]
-		deck = deck[5:]
-		hand3 = hand[:3]
-		del hand[:3]
-		hand4 = hand[:2]
-		del hand[:2]
-		
+
+		for x in range(1, 5):
+			players[(x+dealer)%4].setHand(self.deck[:5])
+			self.deck = self.deck[5:]
 		
 	def orderUpDealerSec(self, players, dealer):
 		pass

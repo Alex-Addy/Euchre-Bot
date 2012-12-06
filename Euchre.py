@@ -8,7 +8,7 @@ if True: # black characters
 	spade = u"\u2660"
 	diamond = u"\u2666"
 	club = u"\u2663"
-else:
+else: # white characters
 	heart = u"\u2661"
 	spade = u"\u2664"
 	diamond = u"\u2662"
@@ -32,12 +32,14 @@ def main():
 	players = (AIs.RandomPlay("R1"), AIs.RandomPlay("R2"), AIs.RandomPlay("R3"), AIs.RandomPlay("R4"))
 	team1 = [0, 1]
 	team2 = [2, 3]
-	dealer = 0
+	dealer = 0 # any reference to a player will be an index to the players tuple
 	
 	while(team1_score < 10 and team2_score < 10):
 		cur_round = Round(
 		
 	if team1_score == 10:
+		pass
+	elif team2_score == 10:
 		pass
 	else:
 		pass
