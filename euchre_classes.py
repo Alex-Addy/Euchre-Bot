@@ -1,8 +1,8 @@
 from euchre_globals import *
 
 class Round(object):
-	def __init__(self, all_cards, players, team1, team2, dealer):
-		self.deck = None
+	def __init__(self, all_cards, players, team1, team2, dealer, allcards):
+		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 		self.trump = None
 		self.dealCards(players, dealer)
 		
@@ -20,7 +20,6 @@ class Round(object):
 			return
 
 	def dealCards(self, players, dealer):
-		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 		random.shuffle(self.deck) # mutates deck
 
 		for x in range(1, 5):
