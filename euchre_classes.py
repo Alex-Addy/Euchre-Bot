@@ -37,8 +37,11 @@ class Trick():
 		self.center = center # dict to hold information about the cards in play for the current trick of the form {card:player}
 		self.leader = leader # the player who will play the first card
 
-	def play(self, players):
-		pass
+	def play(self, players, trump):
+		for x in range(len(players)):
+			cur_player = self.players[(self.leader+x)%len(players)]
+			played = cur_player.playCard(self, trump)
+			self.center[played] = (self.leader+x)%len(players)		
 	
 	def __repr__(self):
 		return "Trick(%r)" % (self.__dict)
