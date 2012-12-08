@@ -57,8 +57,13 @@ class SimpleStat():
 
 	def updateInfo(self, finished_trick, trump):
 		assert len(finished_trick.center) == 4, "there should be four cards in the center"
-		self.tfc -= finished_trick.center.keys()
+		self.tfc -= set(finished_trick.center.keys())
 		
+		for c, p in finished_trick.center.items():
+			if player == finished_trick.leader:
+				lead_suit = c.suit
+		
+		lead_set = set([x for x in allcards if x.suit == heart])
 		pass
 
 	def orderUp(self, center_card, dealer):

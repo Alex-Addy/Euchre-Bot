@@ -26,3 +26,44 @@ class Card(object):
 	def __repr__(self):
 		return "Card(%r)" % (self.__dict)
 
+
+def winningCard(trick, trump):
+	temp = [(x, curCardVal(x, trick)) for x in trick.center]
+	best = temp[0][1]
+	bext_x = 0
+	
+	for x in range(1, len(temp)):
+		if temp[x][1] > best:
+			best = temp[x][1]
+			best_x = x
+	
+	return temp[x][0]
+
+
+def curCardVal(card, trick):
+	if card.suit == trick.trump:
+		if card.num == 11: # card is right bower
+			return card.num + 15
+		else:
+			return card.num + 10
+			
+	elif card.num == 11 and card.suit == offSuit(trick.trump):
+		# card is left bower
+		return card.num + 14
+	elif card.suit == trick.lead:
+		return card.num
+	else:
+		return 0
+
+def offSuit(trump_suit):
+	"""
+	Takes a suit and returns what the off hand suit would be.
+	"""
+	if trump_suit == heart:
+		return diamond
+	elif trump_suit == diamond:
+		return heart
+	elif trump_suit == spade:
+		return club
+	else:
+		return spade
