@@ -3,9 +3,6 @@ from euchre_classes import *
 from euchre_globals import *
 import AIs
 
-# a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
-allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
-
 def main():
 
 	random.seed() # uses the system time by default

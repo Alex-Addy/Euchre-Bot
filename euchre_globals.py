@@ -8,4 +8,21 @@ else: # white characters
 	spade = u"\u2664"
 	diamond = u"\u2662"
 	club = u"\u2667"
+	
+# a list of all possible cards, done as a tuple so that it cannot be accidently changed at runtime
+allcards = tuple([Card(s, c) for s in (diamond, spade, club, heart) for c in (14, 13, 12, 11, 10, 9)])
+
+class Card(object):
+	def __init__(self, suit, num):
+		self.suit = suit
+		self.num = num
+		
+	def __str__(self):
+		if self.num > 10:
+			return list("Jack", "Queen", "King", "Ace")[self.num - 11] + "|" + self.suit
+		else:
+			return str(self.num) + "|" + self.suit
+
+	def __repr__(self):
+		return "Card(%r)" % (self.__dict)
 
