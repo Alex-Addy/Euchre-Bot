@@ -32,7 +32,7 @@ class RandomPlay(BasePlayer):
 
 	def pickSuit(self, out_suit):
 		if random.choice([True, False]):
-			return random.choice(x for x in [heart, spade, club, diamond] if x != out_suit)
+			return random.choice([x for x in [heart, spade, club, diamond] if x != out_suit])
 		else:
 			return None
 		
