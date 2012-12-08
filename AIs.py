@@ -8,7 +8,7 @@
 # reset(self)
 # setHand(self, new-hand)
 
-from euchre_globals import *
+from my_globals import *
 
 import random
 random.seed(time)
