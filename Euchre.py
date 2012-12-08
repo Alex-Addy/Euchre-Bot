@@ -29,7 +29,30 @@ def main():
 		print("Team 2 wins!") # placeholder
 	else:
 		pass
+
+# holder and runner of the entire game
+class Game():
+	def __init__(self, ):
+		pass
 		
+	def playRound(self, ):
+		pass
+	
+	def playTrick(self, ):
+		pass
+		
+	def getWinningCard(self, center_cards, trump):
+		temp = [(x, curCardVal(x, trick)) for x in trick.center]
+		best = temp[0][1]
+		bext_x = 0
+	
+		for x in range(1, len(temp)):
+			if temp[x][1] > best:
+				best = temp[x][1]
+				best_x = x
+		
+		return temp[x][0]
+
 if __name__ == "__main__":
 	pass
 	

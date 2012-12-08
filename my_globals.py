@@ -26,20 +26,6 @@ class Card(object):
 	def __repr__(self):
 		return "Card(%r)" % (self.__dict)
 
-
-def winningCard(trick, trump):
-	temp = [(x, curCardVal(x, trick)) for x in trick.center]
-	best = temp[0][1]
-	bext_x = 0
-	
-	for x in range(1, len(temp)):
-		if temp[x][1] > best:
-			best = temp[x][1]
-			best_x = x
-	
-	return temp[x][0]
-
-
 def curCardVal(card, trick):
 	if card.suit == trick.trump:
 		if card.num == 11: # card is right bower
