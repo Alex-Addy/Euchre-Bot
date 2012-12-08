@@ -38,7 +38,14 @@ class Round(object):
 		return None
 		
 	def pickSuitSec(self, players, out_suit):
-		pass
+		for x in range(1, len(players)+1):
+			cur_player = self.players[(self.dealer+x)%len(players)]
+			picked = cur_player.pickSuit(out_suit):
+			if picked:
+				return (self.dealer+x)%len(players), picked
+			else:
+				pass # display that the player passed
+		return None
 	
 class Trick():
 	def __init__(self, center = {}, leader = None):
