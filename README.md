@@ -19,20 +19,16 @@ Card
 suit:suit
 num:int
 
-team
-----
-score:int
-tricks:int
-
-trick
+Trick
 -----
 center:[(player:Card),...]
 lead:player
 
-hand
+Round
 ----
 trump:suit
 caller:player
+deck:cards
 
 
 Rules
