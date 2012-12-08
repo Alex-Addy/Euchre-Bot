@@ -26,21 +26,6 @@ class Card(object):
 	def __repr__(self):
 		return "Card(%r)" % (self.__dict)
 
-def curCardVal(card, trick):
-	if card.suit == trick.trump:
-		if card.num == 11: # card is right bower
-			return card.num + 15
-		else:
-			return card.num + 10
-			
-	elif card.num == 11 and card.suit == offSuit(trick.trump):
-		# card is left bower
-		return card.num + 14
-	elif card.suit == trick.lead:
-		return card.num
-	else:
-		return 0
-
 def offSuit(trump_suit):
 	"""
 	Takes a suit and returns what the off hand suit would be.

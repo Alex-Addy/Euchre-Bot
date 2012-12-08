@@ -41,8 +41,8 @@ class Game():
 	def playTrick(self, ):
 		pass
 		
-	def getWinningCard(self, center_cards, trump):
-		temp = [(x, curCardVal(x, trick)) for x in trick.center]
+	def getWinningCard(self, center_cards, trump, lead_suit):
+		temp = [(x, self.curCardVal(x, trump)) for x in center_cards]
 		best = temp[0][1]
 		bext_x = 0
 	
@@ -52,6 +52,22 @@ class Game():
 				best_x = x
 		
 		return temp[x][0]
+		
+	def curCardVal(card, trump, lead_suit):
+		if card.suit == trump:
+			if card.num == 11: # card is right bower
+				return card.num + 15
+			else:
+				return card.num + 10
+				
+		elif card.num == 11 and card.suit == offSuit(trump):
+			# card is left bower
+			return card.num + 14
+		elif card.suit == lead_suit:
+			return card.num
+		else:
+			return 0
+
 
 if __name__ == "__main__":
 	pass
