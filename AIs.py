@@ -3,6 +3,7 @@
 # playCard(self, cur_trick, trump)
 # updateInfo(self, finished_trick)
 # orderUp(self, center_card, dealer)
+# pickUp(self, center_card)
 # pickSuit(self, out_suit)
 # reset(self)
 # setHand(self, new-hand)
