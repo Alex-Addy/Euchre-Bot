@@ -1,7 +1,7 @@
 from my_globals import *
 
 class Round(object):
-	def __init__(self, all_cards, players, team1, team2, dealer):
+	def __init__(self, all_cards, players, dealer):
 		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 		self.trump = None
 		self.dealCards(players, dealer)
@@ -46,6 +46,14 @@ class Round(object):
 			else:
 				pass # display that the player passed
 		return None
+		
+	def play(self, players, dealer)
+		self.setUp(players, dealer)
+		self.tricks = []
+		cur_leader = (dealer+1)%4
+		for x in range(1,6):
+			self.tricks.append(Trick(leader=cur_leader))
+			cur_leader = self.tricks[x].play(players, self.
 	
 class Trick():
 	def __init__(self, center = {}, leader = None):
@@ -56,7 +64,7 @@ class Trick():
 		for x in range(len(players)):
 			cur_player = self.players[(self.leader+x)%len(players)]
 			played = cur_player.playCard(self, trump)
-			self.center[played] = (self.leader+x)%len(players)		
+			self.center[played] = (self.leader+x)%len(players)	
 	
 	def __repr__(self):
 		return "Trick(%r)" % (self.__dict)
