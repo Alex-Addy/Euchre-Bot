@@ -1,4 +1,4 @@
-from euchre_globals import *
+from my_globals import *
 
 class Round(object):
 	def __init__(self, all_cards, players, team1, team2, dealer):
