@@ -43,11 +43,22 @@ class RandomPlay(BasePlayer):
 class SimpleStat():
 	def __init__(self, name):
 		super(BasePlayer, self).__init__(name)
+		self.tfc = set(allcards) # tfc stands for total free cards
+		self.partner = set(allcards)
+		self.opp1 = set(allcards)
+		self.opp2 = set(allcards)
 		
+	def setHand(self, hand):
+		super(BasePlayer, self).setHand(hand)
+		self.tfc -= set(self.hand)
+	
 	def playCard(self, cur_trick, trump):
 		pass
 
 	def updateInfo(self, finished_trick, trump):
+		assert len(finished_trick.center) == 4, "there should be four cards in the center"
+		self.tfc -= finished_trick.center.keys()
+		
 		pass
 
 	def orderUp(self, center_card, dealer):
@@ -127,8 +138,6 @@ class RealPlayer():
 		# not necessary for a real player
 		pass
 
-# utility functions for the AIs to use
-
 class BasePlayer():
 	def __init__(self, name):
 		self.name = name # name is a unique identifier
@@ -155,8 +164,6 @@ class BasePlayer():
 		return tuple(validmoves)
 		
 	def setHand(self, hand):
-		if len(hand) == 5:
-			self.hand = hand
-			return True
-		else:
-			return False
+		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
+		self.hand = hand
+			
