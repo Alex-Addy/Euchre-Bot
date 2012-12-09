@@ -7,6 +7,7 @@ class Euchre():
 		self.playerA2 = None
 		self.playerB1 = None
 		self.playerB2 = None
+		self.players = [self.playerA1, self.playerB1, self.playerA2, self.playerB2]
 		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 
 	def start(self): # begins the first round
@@ -26,14 +27,8 @@ class Euchre():
 			self.deck = self.deck[5:]
 
 	def rotateDeal(self): # rotate the dealer
-		if game.dealer == playerA1:
-			game.dealer = playerB1
-		elif game.dealer == playerB1:
-			game.dealer = playerA2
-		elif game.dealer == playerA2:
-			game.dealer = playerB2
-		elif game.dealer == playerB2:
-			game.dealer = playerA1
+		# use this if game.dealer is a direct reference
+		game.dealer = self.players[(self.players.index(game.dealer)+1)%4]
 
 	def playRound(self): # begins the next 5 tricks
 		self.rotateDeal()
