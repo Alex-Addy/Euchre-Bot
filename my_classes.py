@@ -37,7 +37,7 @@ class Euchre():
         pass
 		
 	def getWinningCard(self, ):
-		temp = [(x, self.curCardVal(x, game.trump)) for x in game.center]
+		temp = [(x, self.curCardVal(x)) for x in game.center]
 		best = temp[0][1]
 		bext_x = 0
 	
