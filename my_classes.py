@@ -8,8 +8,11 @@ class Euchre():
         self.playerB1 = None
         self.playerB2 = None
         self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
+            
+    def start(self, ): # begins the first round
+        pass
 		
-	def playRound(self, ):
+	def playRound(self, ): # begins the next 5 tricks
 		pass
 	
 	def playTrick(self, ):
