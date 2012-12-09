@@ -24,13 +24,13 @@ class Card(object):
 	def __init__(self, suit, num):
 		self.suit = suit
 		self.num = num
-    
+
 	def __str__(self):
 		if self.num > 10:
 			return list("Jack", "Queen", "King", "Ace")[self.num - 11] + "|" + self.suit
 		else:
 			return str(self.num) + "|" + self.suit
-    
+
 	def __repr__(self):
 		return "Card(%r)" % (self.__dict)
 

@@ -151,8 +151,8 @@ class BasePlayer():
 		
 	def printHand(self):
 		for x in range(len(self.hand)):
-			print(x, ":", self.hand[x], end=" ")
-		print()
+			print x, ":", self.hand[x],
+		print
 		
 	def validMoves(self, trick, trump):
 		"""
@@ -171,4 +171,3 @@ class BasePlayer():
 	def setHand(self, hand):
 		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
 		self.hand = hand
-			

@@ -5,9 +5,9 @@ import AIs
 
 def main():
 
-    game = Euchre()
-    
-    game.start()
+	game = Euchre()
+
+	game.start()
 
 if __name__ == "__main__":
 	pass
