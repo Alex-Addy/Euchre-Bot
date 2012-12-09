@@ -1,13 +1,18 @@
 from my_globals import *
+import AIs
 
 # holder and runner of the entire game
 class Euchre():
 	def __init__(self):
-		self.playerA1 = None # will initialize AI's here
-		self.playerA2 = None
-		self.playerB1 = None
-		self.playerB2 = None
+		# initialize AI's here
+		self.playerA1 = AIs.RandomPlay("Susan")
+		self.playerA2 = AIs.RandomPlay("Mary")
+		self.playerB1 = AIs.RandomPlay("Katrina")
+		self.playerB2 = AIs.RandomPlay("Sandy")
+
+		# make a list of the players for rotations
 		self.players = [self.playerA1, self.playerB1, self.playerA2, self.playerB2]
+
 		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 
 	def start(self): # begins the first round
