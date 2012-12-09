@@ -13,9 +13,9 @@ from my_globals import *
 import random
 random.seed() # automatically uses system time
 
-class RandomPlay(BasePlayer):
+class RandomPlay(Player):
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		super(Player, self).__init__(name)
 
 	def playCard(self, cur_trick, trump):
 		moves = validMoves(self.hand, trick)
@@ -42,14 +42,14 @@ class RandomPlay(BasePlayer):
 
 class SimpleStat():
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		super(Player, self).__init__(name)
 		self.tfc = set(allcards) # tfc stands for total free cards
 		self.partner = set(allcards)
 		self.opp1 = set(allcards)
 		self.opp2 = set(allcards)
 		
 	def setHand(self, hand):
-		super(BasePlayer, self).setHand(hand)
+		super(Player, self).setHand(hand)
 		self.tfc -= set(self.hand)
 	
 	def playCard(self, cur_trick, trump):
@@ -83,7 +83,7 @@ class SimpleRules():
 	# this ai will use arbitrary rules created by us to play the game
 	# defaulting to random play when unsure
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		super(Player, self).__init__(name)
 		
 	def playCard(self, cur_trick, trump):
 		pass
@@ -106,7 +106,7 @@ class SimpleRules():
 		
 class RealPlayer():
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		super(Player, self).__init__(name)
 	
 	def playCard(self, cur_trick, trump):
 		self.printHand()
@@ -143,7 +143,7 @@ class RealPlayer():
 		# not necessary for a real player
 		pass
 
-class BasePlayer():
+class Player():
 	def __init__(self, name):
 		self.name = name # name is a unique identifier
 		self.tricks = 0
