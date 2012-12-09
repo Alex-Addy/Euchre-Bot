@@ -12,6 +12,9 @@ class Euchre():
     def start(self, ): # begins the first round
         # determine first dealer
         playRound()
+        
+    def dealCards(self, ):
+		random.shuffle(self.deck) # mutates deck
 		
 	def playRound(self, ): # begins the next 5 tricks
         # Plays 5 tricks
