@@ -31,7 +31,7 @@ class Euchre():
         else
             return false
 		
-	def getWinningCard(self, center_cards, trump, lead_suit):
+	def getWinningCard(self, ):
 		temp = [(x, self.curCardVal(x, trump)) for x in center_cards]
 		best = temp[0][1]
 		bext_x = 0
@@ -43,7 +43,7 @@ class Euchre():
 		
 		return temp[x][0]
 		
-	def curCardVal(card, trump, lead_suit):
+	def curCardVal(card, ):
 		if card.suit == trump:
 			if card.num == 11: # card is right bower
 				return card.num + 15
