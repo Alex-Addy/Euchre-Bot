@@ -20,6 +20,16 @@ class Euchre():
 	
 	def playTrick(self, ):
 		pass
+        
+    def hasWinner(self, ):
+        if game.teamA >= 10:
+            print "Team A Has won!"
+            return true
+        elif game.teamB >= 10:
+            print "Team B Has won!"
+            return true
+        else
+            return false
 		
 	def getWinningCard(self, center_cards, trump, lead_suit):
 		temp = [(x, self.curCardVal(x, trump)) for x in center_cards]
