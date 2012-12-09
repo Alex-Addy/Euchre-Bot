@@ -31,6 +31,7 @@ class Euchre():
             game.dealer = playerA1:
 		
 	def playRound(self, ): # begins the next 5 tricks
+        self.rotateDeal()
         self.dealCards()
 
         # Plays 5 tricks
