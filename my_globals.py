@@ -17,6 +17,7 @@ game = Info()
 game.dealer = None
 game.trump  = None
 game.lead   = None
+game.center = None
 game.teamA  = 0
 game.teamB  = 0
 
