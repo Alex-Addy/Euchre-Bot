@@ -20,7 +20,7 @@ class Euchre():
             players[(x+dealer)%4].setHand(self.deck[:5])
             self.deck = self.deck[5:]
             
-    def incrementDealer(self, ): # rotate the dealer
+    def rotateDeal(self, ): # rotate the dealer
         if game.dealer == playerA1:
             game.dealer = playerB1
         elif game.dealer == playerB1:
