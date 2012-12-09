@@ -3,7 +3,7 @@ from my_globals import *
 # holder and runner of the entire game
 class Euchre():
     def __init__(self, ):
-		self.playerA1 = None
+		self.playerA1 = None # will initialize AI's here
         self.playerA2 = None
         self.playerB1 = None
         self.playerB2 = None

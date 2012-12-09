@@ -10,10 +10,9 @@ else: # white characters
 	club = u"\u2667"
 	
 class Info:
-    pass
+    pass # empty class (behaves like a struct in c++)
 
-game = Info()
-
+game = Info() 
 game.dealer = None
 game.trump  = None
 game.lead   = None
