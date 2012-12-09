@@ -34,7 +34,9 @@ class Euchre():
         self.rotateDeal()
         self.dealCards()
 
-        # Plays 5 tricks
+        # order up
+ 
+        # play 5 tricks
 
         if hasWinner():
             endGame() # if winner is found, end the game
