@@ -23,7 +23,8 @@ class Euchre():
 		random.shuffle(self.deck) # mutates deck
 
 		for x in range(1, len(players)+1):
-			players[(x+dealer)%4].setHand(self.deck[:5])
+			deal_index = self.players.index(game.dealer)
+			self.players[(x+deal_index)%4].setHand(self.deck[:5])
 			self.deck = self.deck[5:]
 
 	def rotateDeal(self): # rotate the dealer
