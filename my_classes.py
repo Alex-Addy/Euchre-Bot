@@ -15,8 +15,8 @@ class Euchre():
 		# moved the multiple playRound calls into here
 		# iterative instead of recursive
 		while not self.hasWinner():
-			playRound()
-		endGame()
+			self.playRound()
+		self.endGame()
 
 	def dealCards(self):
 		random.shuffle(self.deck) # mutates deck
