@@ -15,6 +15,10 @@ class Euchre():
         
     def dealCards(self, ):
 		random.shuffle(self.deck) # mutates deck
+            
+        for x in range(1, len(players)+1):
+            players[(x+dealer)%4].setHand(self.deck[:5])
+            self.deck = self.deck[5:]
 		
 	def playRound(self, ): # begins the next 5 tricks
         # Plays 5 tricks
