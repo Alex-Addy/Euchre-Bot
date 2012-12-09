@@ -11,7 +11,7 @@
 from my_globals import *
 
 import random
-random.seed(time)
+random.seed() # automatically uses system time
 
 class RandomPlay(BasePlayer):
 	def __init__(self, name):
