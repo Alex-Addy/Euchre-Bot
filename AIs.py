@@ -46,17 +46,17 @@ class RandomPlay(Player):
 	def __init__(self, name):
 		super(Player, self).__init__(name)
 
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		moves = validMoves(self.hand, trick)
 		chosen = random.choice(moves)
 		self.hand.remove(chosen)
 		return chosen
 		
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		# not necessary for random play
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		return random.choice([True, False])
 
 	def pickSuit(self, out_suit):
@@ -81,10 +81,10 @@ class SimpleStat():
 		super(Player, self).setHand(hand)
 		self.tfc -= set(self.hand)
 	
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		pass
 
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		assert len(finished_trick.center) == 4, "there should be four cards in the center"
 		self.tfc -= set(finished_trick.center.keys())
 		
@@ -95,7 +95,7 @@ class SimpleStat():
 		lead_set = set([x for x in allcards if x.suit == heart])
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		pass
 
 	def pickSuit(self, out_suit):
@@ -114,13 +114,13 @@ class SimpleRules():
 	def __init__(self, name):
 		super(Player, self).__init__(name)
 		
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		pass
 
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		pass
 
 	def pickSuit(self, out_suit):
@@ -137,7 +137,7 @@ class RealPlayer():
 	def __init__(self, name):
 		super(Player, self).__init__(name)
 	
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		self.printHand()
 		move = input("Please enter the # of the card you wish to play: ")
 		while(True):
@@ -146,11 +146,11 @@ class RealPlayer():
 			else:
 				move = input("Please enter a valid move: ")
 				
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		# not necessary for a real player
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		if self == dealer:
 			self.dealerPickUp(self, center_card) # is this what I want
 			
