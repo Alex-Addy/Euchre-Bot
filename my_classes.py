@@ -12,6 +12,8 @@ class Euchre():
 
 	def start(self): # begins the first round
 		# determine first dealer
+		# start at last player so that the first rotate in playRound has the first player deal
+		game.dealer = self.playerB2
 
 		# moved the multiple playRound calls into here
 		# iterative instead of recursive
@@ -35,8 +37,8 @@ class Euchre():
 		self.rotateDeal()
 		self.dealCards()
 
-		# order up
-
+		# prepare for round
+		self.setUp()
 		# play 5 tricks
 		pass
 
@@ -84,20 +86,19 @@ class Euchre():
 		else:
 			return 0
 
-	def setUp(self, players, dealer):
-		self.dealCards(self, players, dealer)
-		who_ordered = self.orderUpDealer(players, dealer)
+	def setUp(self):
+		who_ordered = self.orderUpDealer()
 		if who_ordered:
 			# pass message to each player about who ordered who to pick up
 			# then have dealer pick up and discard
 			return
 		else:
-			who, what = self.pickSuitSec(players, dealer)
+			who, what = self.pickSuitSec(self.deck[0].suit)
 			# stick the dealer
 			# communicate who picked and what was picked to each player
 			return
 
-	def orderUpDealerSec(self, players, dealer):
+	def orderUpDealerSec(self):
 		for x in range(1, len(players)+1):
 			cur_player = self.players[(self.dealer+x)%len(players)]
 			if cur_player.orderUp(self.deck[0], dealer):
@@ -108,7 +109,7 @@ class Euchre():
 				pass # display that the player passed
 		return None
 		
-	def pickSuitSec(self, players, out_suit):
+	def pickSuitSec(self, out_suit):
 		for x in range(1, len(players)+1):
 			cur_player = self.players[(self.dealer+x)%len(players)]
 			picked = cur_player.pickSuit(out_suit)
