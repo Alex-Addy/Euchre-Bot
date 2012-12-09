@@ -83,3 +83,38 @@ class Euchre():
 			return card.num
 		else:
 			return 0
+
+	def setUp(self, players, dealer):
+		self.dealCards(self, players, dealer)
+		who_ordered = self.orderUpDealer(players, dealer)
+		if who_ordered:
+			# pass message to each player about who ordered who to pick up
+			# then have dealer pick up and discard
+			return
+		else:
+			who, what = self.pickSuitSec(players, dealer)
+			# stick the dealer
+			# communicate who picked and what was picked to each player
+			return
+
+	def orderUpDealerSec(self, players, dealer):
+		for x in range(1, len(players)+1):
+			cur_player = self.players[(self.dealer+x)%len(players)]
+			if cur_player.orderUp(self.deck[0], dealer):
+				placed = self.players[dealer].pickUp(self.deck[0])
+				self.deck[0] = placed
+				return (self.dealer+x)%len(players)
+			else:
+				pass # display that the player passed
+		return None
+		
+	def pickSuitSec(self, players, out_suit):
+		for x in range(1, len(players)+1):
+			cur_player = self.players[(self.dealer+x)%len(players)]
+			picked = cur_player.pickSuit(out_suit)
+			if picked:
+				return (self.dealer+x)%len(players), picked
+			else:
+				pass # display that the player passed
+		return None
+
