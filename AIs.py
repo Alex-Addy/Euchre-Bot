@@ -104,7 +104,7 @@ class SimpleStat():
 	def reset(self):
 		"""Reset the information gathered by the ai without reinstatiating it.
 		
-			For use between rounds.
+			For use between rounds. Useful for those that need to keep their statistics.
 		"""
 		pass
 
