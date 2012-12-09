@@ -2,7 +2,7 @@ from my_globals import *
 
 # holder and runner of the entire game
 class Euchre():
-    def __init__(self):
+	def __init__(self):
 		self.playerA1 = None # will initialize AI's here
 		self.playerA2 = None
 		self.playerB1 = None
@@ -72,7 +72,8 @@ class Euchre():
 		
 		return temp[x][0]
 		
-	def curCardVal(self, card): """This might need to become a global function"""
+	def curCardVal(self, card):
+		"""This might need to become a global function"""
 		if card.suit == game.trump:
 			if card.num == 11: # card is right bower
 				return card.num + 15
