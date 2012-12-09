@@ -19,6 +19,16 @@ class Euchre():
         for x in range(1, len(players)+1):
             players[(x+dealer)%4].setHand(self.deck[:5])
             self.deck = self.deck[5:]
+            
+    def incrementDealer(self, ): # rotate the dealer
+        if game.dealer == playerA1:
+            game.dealer = playerB1
+        elif game.dealer == playerB1:
+            game.dealer = playerA2
+        elif game.dealer == playerA2:
+            game.dealer = playerB2:
+        elif game.dealer == playerB2:
+            game.dealer = playerA1:
 		
 	def playRound(self, ): # begins the next 5 tricks
         self.dealCards()
