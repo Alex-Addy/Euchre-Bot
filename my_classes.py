@@ -21,7 +21,10 @@ class Euchre():
             self.deck = self.deck[5:]
 		
 	def playRound(self, ): # begins the next 5 tricks
+        self.dealCards()
+
         # Plays 5 tricks
+
         if hasWinner():
             endGame() # if winner is found, end the game
         else
