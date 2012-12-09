@@ -99,9 +99,10 @@ class Euchre():
 			return
 
 	def orderUpDealerSec(self):
-		for x in range(1, len(players)+1):
-			cur_player = self.players[(self.dealer+x)%len(players)]
-			if cur_player.orderUp(self.deck[0], dealer):
+		deal_index = self.players.index(game.dealer)
+		for x in range(1, 5):
+			cur_player = self.players[(deal_index+x)%4]
+			if cur_player.orderUp(self.deck[0]):
 				placed = self.players[dealer].pickUp(self.deck[0])
 				self.deck[0] = placed
 				return (self.dealer+x)%len(players)
@@ -118,4 +119,3 @@ class Euchre():
 			else:
 				pass # display that the player passed
 		return None
-

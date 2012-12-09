@@ -1,8 +1,8 @@
 # Collection of AI's each one should implement:
 # init(self, name)
-# playCard(self, cur_trick, trump)
-# updateInfo(self, finished_trick)
-# orderUp(self, center_card, dealer)
+# playCard(self)
+# updateInfo(self)
+# orderUp(self, center_card)
 # pickUp(self, center_card)
 # pickSuit(self, out_suit)
 # reset(self)
