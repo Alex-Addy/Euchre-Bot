@@ -71,7 +71,7 @@ class Euchre():
 		
 		return temp[x][0]
 		
-	def curCardVal(card, ):
+	def curCardVal(card, ): """This might need to become a global function"""
 		if card.suit == game.trump:
 			if card.num == 11: # card is right bower
 				return card.num + 15
