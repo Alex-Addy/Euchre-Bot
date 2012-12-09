@@ -13,6 +13,35 @@ from my_globals import *
 import random
 random.seed() # automatically uses system time
 
+class Player():
+	def __init__(self, name):
+		self.name = name # name is a unique identifier
+		self.tricks = 0
+		self.hand = []
+		
+	def printHand(self):
+		for x in range(len(self.hand)):
+			print x, ":", self.hand[x],
+		print
+		
+	def validMoves(self, trick, trump):
+		"""
+		Changing the lead suit to trump may cause issues to arise
+		"""
+		# assume that the lead, left bower problem is taken care of
+		validmoves = []
+		for x in hand:
+			if x.num == 11:
+				if lead == trump and x.suit == offSuit(trump):
+					validmove.append(x)
+			elif x.suit == lead:
+				validmoves.append(x)
+		return tuple(validmoves)
+		
+	def setHand(self, hand):
+		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
+		self.hand = hand
+
 class RandomPlay(Player):
 	def __init__(self, name):
 		super(Player, self).__init__(name)
@@ -142,32 +171,3 @@ class RealPlayer():
 	def reset(self):
 		# not necessary for a real player
 		pass
-
-class Player():
-	def __init__(self, name):
-		self.name = name # name is a unique identifier
-		self.tricks = 0
-		self.hand = []
-		
-	def printHand(self):
-		for x in range(len(self.hand)):
-			print x, ":", self.hand[x],
-		print
-		
-	def validMoves(self, trick, trump):
-		"""
-		Changing the lead suit to trump may cause issues to arise
-		"""
-		# assume that the lead, left bower problem is taken care of
-		validmoves = []
-		for x in hand:
-			if x.num == 11:
-				if lead == trump and x.suit == offSuit(trump):
-					validmove.append(x)
-			elif x.suit == lead:
-				validmoves.append(x)
-		return tuple(validmoves)
-		
-	def setHand(self, hand):
-		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
-		self.hand = hand
