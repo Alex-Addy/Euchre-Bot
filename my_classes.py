@@ -14,9 +14,10 @@ class Euchre():
 		
 	def playRound(self, ): # begins the next 5 tricks
         # Plays 5 tricks
-        # Checks for winner
-        # calls playRound() again
-		pass
+        if hasWinner():
+            endGame()
+        else
+            playRound()
 	
 	def playTrick(self, ):
 		pass
