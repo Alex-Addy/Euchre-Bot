@@ -11,7 +11,12 @@ class Euchre():
 
 	def start(self): # begins the first round
 		# determine first dealer
-		playRound()
+
+		# moved the multiple playRound calls into here
+		# iterative instead of recursive
+		while not self.hasWinner():
+			playRound()
+		endGame()
 
 	def dealCards(self):
 		random.shuffle(self.deck) # mutates deck
@@ -30,18 +35,14 @@ class Euchre():
 		elif game.dealer == playerB2:
 			game.dealer = playerA1
 
-	def playRound(self, ): # begins the next 5 tricks
+	def playRound(self): # begins the next 5 tricks
 		self.rotateDeal()
 		self.dealCards()
 
 		# order up
 
 		# play 5 tricks
-
-		if hasWinner():
-			endGame() # if winner is found, end the game
-		else
-			playRound() # no winner, play another round
+		pass
 
 	def playTrick(self):
 		pass
