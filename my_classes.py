@@ -30,6 +30,9 @@ class Euchre():
             return true
         else
             return false
+
+    def endGame(self, ): # ends the game
+        pass
 		
 	def getWinningCard(self, ):
 		temp = [(x, self.curCardVal(x, game.trump)) for x in game.center]
