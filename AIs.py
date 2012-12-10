@@ -1,5 +1,5 @@
 # Collection of functions each AI should implement:
-# init(self, name)
+# __init__(self, name)
 # playCard(self)
 # updateInfo(self)
 # orderUp(self, center_card)
@@ -19,7 +19,7 @@ class Player():
 		
 	def printHand(self):
 		for x in range(len(self.hand)):
-			print x, ":", self.hand[x],
+			print "[", x, ":", self.hand[x], "]",
 		print
 		
 	def BaseSetUp(self, name):
@@ -28,11 +28,8 @@ class Player():
 		self.hand = []
 		
 	def validMoves(self):
-		"""
-		Changing the lead suit to trump may cause issues to arise
-		"""
 		# assume that the lead, left bower problem is taken care of
-		validmoves = []
+		validmoves = [] 
 		for x in hand:
 			if x.num == 11:
 				if game.lead == game.trump and x.suit == offSuit(game.trump):
@@ -42,7 +39,7 @@ class Player():
 		return tuple(validmoves)
 		
 	def setHand(self, hand):
-		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
+		assert len(hand) == 5, "from setHand of %s, hand needs to be 5" % self.name
 		self.hand = hand
 
 class RandomPlay(Player):
