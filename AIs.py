@@ -1,4 +1,4 @@
-# Collection of AI's each one should implement:
+# Collection of functions each AI should implement:
 # init(self, name)
 # playCard(self)
 # updateInfo(self)
