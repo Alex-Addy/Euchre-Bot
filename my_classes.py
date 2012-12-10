@@ -64,6 +64,8 @@ class Euchre():
 
 	def playTrick(self):
 		# TODO
+		
+		# handle the lead/left bower problem
 		pass
 		
 	def allotScore(self):

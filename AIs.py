@@ -15,16 +15,19 @@ random.seed() # automatically uses system time
 
 class Player():
 	def __init__(self, name):
-		self.name = name # name is a unique identifier
-		self.tricks = 0
-		self.hand = []
+		self.BaseSetUp(name)
 		
 	def printHand(self):
 		for x in range(len(self.hand)):
 			print x, ":", self.hand[x],
 		print
 		
-	def validMoves(self, trick, trump):
+	def BaseSetUp(self, name):
+		self.name = name # name is a unique identifier
+		self.tricks = 0
+		self.hand = []
+		
+	def validMoves(self):
 		"""
 		Changing the lead suit to trump may cause issues to arise
 		"""
@@ -32,9 +35,9 @@ class Player():
 		validmoves = []
 		for x in hand:
 			if x.num == 11:
-				if lead == trump and x.suit == offSuit(trump):
+				if game.lead == game.trump and x.suit == offSuit(game.trump):
 					validmove.append(x)
-			elif x.suit == lead:
+			elif x.suit == game.lead:
 				validmoves.append(x)
 		return tuple(validmoves)
 		
@@ -44,8 +47,8 @@ class Player():
 
 class RandomPlay(Player):
 	def __init__(self, name):
-		super(Player, self).__init__(name)
-
+		self.BaseSetUp(name)
+		
 	def playCard(self):
 		moves = validMoves(self.hand, trick)
 		chosen = random.choice(moves)
@@ -71,7 +74,7 @@ class RandomPlay(Player):
 
 class SimpleStat():
 	def __init__(self, name):
-		super(Player, self).__init__(name)
+		self.BaseSetUp(name)
 		self.tfc = set(allcards) # tfc stands for total free cards
 		self.partner = set(allcards)
 		self.opp1 = set(allcards)
@@ -112,7 +115,7 @@ class SimpleRules():
 	# this ai will use arbitrary rules created by us to play the game
 	# defaulting to random play when unsure
 	def __init__(self, name):
-		super(Player, self).__init__(name)
+		self.BaseSetUp(name)
 		
 	def playCard(self):
 		pass
@@ -135,7 +138,7 @@ class SimpleRules():
 		
 class RealPlayer():
 	def __init__(self, name):
-		super(Player, self).__init__(name)
+		self.BaseSetUp(name)
 	
 	def playCard(self):
 		self.printHand()
