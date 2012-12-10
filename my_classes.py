@@ -45,12 +45,14 @@ class Euchre():
 		# prepare for round
 		who_ordered = self.orderUpDealer()
 		if who_ordered:
+			# TODO
 			# pass message to each player about who ordered who to pick up
 			# then have dealer pick up and discard
 			who_ordered.pickUp(self.deck)
 			pass
 		else:
 			who, what = self.pickSuitSec(self.deck[0].suit)
+			# TODO
 			# stick the dealer
 			# communicate who picked and what was picked to each player
 			pass
