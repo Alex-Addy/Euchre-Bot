@@ -7,7 +7,7 @@ def main():
 
 	game = Euchre()
 
-	game.start()
+	game.playGame()
 
 if __name__ == "__main__":
 	pass

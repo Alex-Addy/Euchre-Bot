@@ -15,7 +15,7 @@ class Euchre():
 
 		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 
-	def start(self): # begins the first round
+	def playGame(self): # begins the first round
 		# determine first dealer
 		# start at last player so that the first rotate in playRound has the first player deal
 		game.dealer = self.playerB2
@@ -47,16 +47,23 @@ class Euchre():
 		if who_ordered:
 			# pass message to each player about who ordered who to pick up
 			# then have dealer pick up and discard
-			return
+			who_ordered.pickUp(self.deck)
+			pass
 		else:
 			who, what = self.pickSuitSec(self.deck[0].suit)
 			# stick the dealer
 			# communicate who picked and what was picked to each player
-			return
+			pass
 		# play 5 tricks
-		pass
+		for x in range(5):
+			self.playTrick()
+		
+		self.allotScore()
 
 	def playTrick(self):
+		pass
+		
+	def allotScore(self):
 		pass
 
 	def hasWinner(self):

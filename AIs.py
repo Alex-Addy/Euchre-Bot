@@ -3,7 +3,7 @@
 # playCard(self)
 # updateInfo(self)
 # orderUp(self, center_card)
-# pickUp(self, center_card)
+# pickUp(self, deck)
 # pickSuit(self, out_suit)
 # reset(self)
 # setHand(self, new-hand)
