@@ -10,15 +10,20 @@ else: # white characters
 	club = u"\u2667"
 	
 class Info:
-    pass # empty class (behaves like a struct in c++)
+	def __init__(self):
+		self.dealer = None
+		self.trump  = None
+		self.lead   = None
+		self.center = {}
+		self.teamA  = 0
+		self.teamB  = 0
 
-game = Info() 
-game.dealer = None
-game.trump  = None
-game.lead   = None
-game.center = {}
-game.teamA  = 0
-game.teamB  = 0
+	def resetTrickInfo(self):
+	   self.trump = None
+	   self.lead = None
+	   self.center = None
+
+game = Info()
 
 class Card(object):
 	def __init__(self, suit, num):

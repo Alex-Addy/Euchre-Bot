@@ -1,5 +1,6 @@
 from my_globals import *
 import AIs
+import random
 
 # holder and runner of the entire game
 class Euchre():
@@ -29,7 +30,7 @@ class Euchre():
 	def dealCards(self):
 		random.shuffle(self.deck) # mutates deck
 
-		for x in range(1, len(players)+1):
+		for x in range(1, 5):
 			deal_index = self.players.index(game.dealer)
 			self.players[(x+deal_index)%4].setHand(self.deck[:5])
 			self.deck = self.deck[5:]
@@ -43,7 +44,7 @@ class Euchre():
 		self.dealCards()
 
 		# prepare for round
-		who_ordered = self.orderUpDealer()
+		who_ordered = self.orderUpDealerSec()
 		if who_ordered:
 			# TODO
 			# pass message to each player about who ordered who to pick up
@@ -118,7 +119,7 @@ class Euchre():
 		for x in range(1, 5):
 			cur_player = self.players[(deal_index+x)%4]
 			if cur_player.orderUp(self.deck[0]):
-				placed = self.players[dealer].pickUp(self.deck[0])
+				placed = self.players[game.dealer].pickUp(self.deck[0])
 				self.deck[0] = placed
 				return (self.dealer+x)%len(players)
 			else:
