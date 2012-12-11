@@ -1,4 +1,3 @@
-import random
 from my_classes import *
 from my_globals import *
 import AIs

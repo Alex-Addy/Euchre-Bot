@@ -119,7 +119,7 @@ class Euchre():
 		for x in range(1, 5):
 			cur_player = self.players[(deal_index+x)%4]
 			if cur_player.orderUp(self.deck[0]):
-				placed = self.players[game.dealer].pickUp(self.deck[0])
+				placed = game.dealer.pickUp(self.deck[0])
 				self.deck[0] = placed
 				return (self.dealer+x)%len(players)
 			else:
@@ -127,7 +127,7 @@ class Euchre():
 		return None
 		
 	def pickSuitSec(self, out_suit):
-		for x in range(1, len(players)+1):
+		for x in range(1, 5):
 			cur_player = self.players[(self.dealer+x)%len(players)]
 			picked = cur_player.pickSuit(out_suit)
 			if picked:

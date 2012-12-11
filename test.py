@@ -1,8 +1,8 @@
 
-import AI
+import AIs
 
 def testAI(cur_ai):
-	# if the attribute does not exist this will raise an attribute error
+	# if the attribute does not exist this will raise an attribute error for the missing function
 	cur_ai.playCard
 	cur_ai.updateInfo
 	cur_ai.orderUp
