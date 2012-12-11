@@ -45,18 +45,15 @@ class Euchre():
 		self.dealCards()
 
 		# prepare for round
-		who_ordered = self.orderUpDealerSec()
-		if who_ordered:
+		game.caller = self.orderUpDealerSec()
+		if game.caller:
 			# TODO
-			# pass message to each player about who ordered who to pick up
-			# then have dealer pick up and discard
-			who_ordered.pickUp(self.deck)
-			pass
+			# have dealer pick up and discard
+			game.dealer.pickUp(self.deck)
 		else:
-			who, what = self.pickSuitSec(self.deck[0].suit)
+			game.caller, game.trump = self.pickSuitSec(self.deck[0].suit)
 			# TODO
 			# stick the dealer
-			# communicate who picked and what was picked to each player
 			pass
 		# play 5 tricks
 		winner = self.players[(self.players.index(game.dealer) + 1)%4]
@@ -89,14 +86,40 @@ class Euchre():
 		return self.getWinningCard()
 		
 	def allotScore(self):
-		# TODO
-		pass
+		# simple rules used, no going alone
+		if self.players.index(game.caller) in (0, 2): # caller is in team A
+			c_team = "A"
+			c_tricks = game.tricksA
+		else:
+			c_tricks = game.tricksB
+			c_team = "B"
+			
+		if c_tricks == 0:
+			if c_team == "A":
+				game.scoreA += 4
+			else:
+				game.scoreB += 4
+		elif c_tricks == 1 or c_tricks == 2:
+			if c_team == "A":
+				game.scoreA += 2
+			else:
+				game.scoreB += 2
+		elif c_tricks == 3 or c_tricks == 4:
+			if c_team == "A":
+				game.scoreA += 1
+			else:
+				game.scoreB += 1
+		else:
+			if c_team == "A":
+				game.scoreA += 2
+			else:
+				game.scoreB += 2
 
 	def hasWinner(self):
-		if game.teamA >= 10:
+		if game.scoreA >= 10:
 			print "Team A Has won!"
 			return True
-		elif game.teamB >= 10:
+		elif game.scoreB >= 10:
 			print "Team B Has won!"
 			return True
 		else:
@@ -106,6 +129,9 @@ class Euchre():
 		pass
 		
 	def getWinningCard(self):
+		# TEST THIS
+		#return sorted(game.center, key=self.curCardVal, reverse=True)[0]
+	
 		temp = [(x, self.curCardVal(x)) for x in game.center]
 		best = temp[0][1]
 		bext_x = 0

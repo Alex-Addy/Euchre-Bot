@@ -13,24 +13,26 @@ class Info:
 	def __init__(self):
 		# trick level
 		self.dealer = None # player
-		self.trump  = None # suit
 		self.lead   = None # suit
 		self.center = {} # array of {card:player} for cards in center of table
 		
 		# round level
+		self.trump  = None # suit
+		self.caller = None # player
 		self.tricksA = 0 # tricks gotten
 		self.tricksB = 0
 		
 		# game level
-		self.teamA  = 0 # total score
-		self.teamB  = 0
+		self.scoreA  = 0 # total score
+		self.scoreB  = 0
 
 	def resetTrick(self):
-	   self.trump = None
-	   self.lead = None
-	   self.center = {}
+		self.lead = None
+		self.center = {}
 	   
 	def resetRound(self):
+		self.trump = None
+		self.caller = None
 		self.tricksA = 0
 		self.tricksB = 0
 
