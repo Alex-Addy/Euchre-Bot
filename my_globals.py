@@ -11,12 +11,17 @@ else: # white characters
 	
 class Info:
 	def __init__(self):
+		# trick level
 		self.dealer = None # player
 		self.trump  = None # suit
 		self.lead   = None # suit
 		self.center = {} # array of {card:player} for cards in center of table
+		
+		# round level
 		self.tricksA = 0 # tricks gotten
 		self.tricksB = 0
+		
+		# game level
 		self.teamA  = 0 # total score
 		self.teamB  = 0
 
