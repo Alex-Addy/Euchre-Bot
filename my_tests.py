@@ -12,7 +12,11 @@ def testAI(cur_ai):
 	cur_ai.setHand
 
 # Test that all AIs have the necessary functions
-testAI(RandomPlay())
-testAI(SimpleStat())
-testAI(SimpleRules())
-testAI(RealPlayer())
+testAI(AIs.RandomPlay("R"))
+print "RandomPlay is good."
+testAI(AIs.SimpleStat("SS"))
+print "SimpleStat is good."
+testAI(AIs.SimpleRules("SR"))
+print "SimpleRules is good."
+testAI(Ais.RealPlayer("RP"))
+print "RealPlayer is good."

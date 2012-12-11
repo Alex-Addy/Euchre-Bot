@@ -29,9 +29,9 @@ class Euchre():
 
 	def dealCards(self):
 		random.shuffle(self.deck) # mutates deck
+		deal_index = self.players.index(game.dealer)
 
 		for x in range(1, 5):
-			deal_index = self.players.index(game.dealer)
 			self.players[(x+deal_index)%4].setHand(self.deck[:5])
 			self.deck = self.deck[5:]
 
@@ -121,14 +121,14 @@ class Euchre():
 			if cur_player.orderUp(self.deck[0]):
 				placed = game.dealer.pickUp(self.deck[0])
 				self.deck[0] = placed
-				return (self.dealer+x)%len(players)
+				return cur_player
 			else:
 				pass # display that the player passed
 		return None
 		
 	def pickSuitSec(self, out_suit):
 		for x in range(1, 5):
-			cur_player = self.players[(self.dealer+x)%len(players)]
+			cur_player = self.players[(self.players.index(game.dealer)+x)%len(players)]
 			picked = cur_player.pickSuit(out_suit)
 			if picked:
 				return (self.dealer+x)%len(players), picked

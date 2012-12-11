@@ -3,7 +3,7 @@
 # playCard(self)
 # updateInfo(self)
 # orderUp(self, center_card)
-# pickUp(self, deck)
+# pickUp(self, card)
 # pickSuit(self, out_suit)
 # reset(self)
 # setHand(self, new-hand)
@@ -64,6 +64,12 @@ class RandomPlay(Player):
 			return random.choice([x for x in [heart, spade, club, diamond] if x != out_suit])
 		else:
 			return None
+
+	def pickUp(self, top):
+		discard = random.choice(self.hand)
+		self.hand.remove(discard)
+		self.hand.append(top)
+		return discard
 		
 	def reset(self):
 		# not necessary for random play
