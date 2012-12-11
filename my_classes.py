@@ -40,6 +40,7 @@ class Euchre():
 		game.dealer = self.players[(self.players.index(game.dealer)+1)%4]
 
 	def playRound(self): # begins the next 5 tricks
+		self.resetRound()
 		self.rotateDeal()
 		self.dealCards()
 
@@ -58,16 +59,34 @@ class Euchre():
 			# communicate who picked and what was picked to each player
 			pass
 		# play 5 tricks
+		winner = self.players[(self.players.index(game.dealer) + 1)%4]
 		for x in range(5):
-			self.playTrick()
+			winner = self.playTrick(winner)
 		
 		self.allotScore()
 
-	def playTrick(self):
-		# TODO
+	def playTrick(self, leader):
+		self.resetTrick()
+		
+		# get the start card from leader
+		# assume cards played are legal
+		played = leader.playCard()
+		game.center[played] = leader
 		
 		# handle the lead/left bower problem
-		pass
+		if played.num = 11 and played.suit == offSuit(game.trump):
+			game.lead = offSuit(game.trump)
+		else:
+			game.lead = played.suit
+		
+		# play the trick
+		leader_index = self.players.index(leader)
+		for x in range(1, 4):
+			played = self.players[(leader_index+x)%4].playCard()
+			game.center[played] = self.players[(leader_index+x)%4]
+		
+		# return the winner of the trick
+		return self.getWinningCard()
 		
 	def allotScore(self):
 		# TODO
