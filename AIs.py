@@ -153,7 +153,7 @@ class RealPlayer():
 		move = int(raw_input("Please enter the # of the card you wish to play: "))
 		valid = self.validMoves()
 		while True:
-			if move is int and 0 <= move < len(hand) and hand[move] in :
+			if move is int and 0 <= move < len(hand) and hand[move] in valid:
 				return move
 			else:
 				move = int(input("Please enter a valid move: "))
@@ -197,7 +197,17 @@ class RealPlayer():
 			return False
 		
 	def pickUp(self, center_card):
-		pass
+		print "You are picking up %s." % (center_card)
+		print "Your hand contains:",
+		self.printHand()
+		
+		move = int(raw_input("Please enter the # of the card you wish to discard: "))
+		valid = self.validMoves()
+		while True:
+			if move is int and 0 <= move < len(hand) and hand[move] in valid:
+				return move
+			else:
+				move = int(input("Please enter a valid discard: "))
 	
 	def reset(self):
 		# not necessary for a real player
