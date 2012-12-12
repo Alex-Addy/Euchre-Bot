@@ -70,6 +70,7 @@ class RandomPlay(Player):
 			return None
 
 	def pickUp(self, top):
+		assert type(top) == Card, "pickUp was given a %s, it wants a Card" % type(top)
 		discard = random.choice(self.hand)
 		self.hand.remove(discard)
 		self.hand.append(top)
@@ -187,5 +188,3 @@ class RealPlayer():
 # orderUp(self, center_card)
 # pickUp(self, card)
 # pickSuit(self, out_suit)
-# reset(self)
-# setHand(self, new-hand)
