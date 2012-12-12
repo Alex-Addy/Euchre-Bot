@@ -42,6 +42,7 @@ class Euchre():
 	def playRound(self): # begins the next 5 tricks
 		game.resetRound()
 		self.rotateDeal()
+		self.deck = list(allcards[:])
 		self.dealCards()
 #		print self.playerA1.name
 #		print self.playerA1.hand
@@ -57,10 +58,7 @@ class Euchre():
 		if game.caller:
 			# TODO
 			# have dealer pick up and discard
-			print game.dealer.name
-			print game.dealer.hand
 			game.dealer.pickUp(self.deck[0])
-			print game.dealer.hand
 		else:
 			game.caller, game.trump = self.pickSuitSec(self.deck[0].suit)
 			# TODO
@@ -104,7 +102,7 @@ class Euchre():
 			game.center[played] = self.players[(leader_index+x)%4]
 		
 		# return the winner of the trick
-		return self.getWinningCard()
+		return game.center[self.getWinningCard()]
 		
 	def allotScore(self):
 		# simple rules used, no going alone
@@ -175,7 +173,7 @@ class Euchre():
 		elif card.num == 11 and card.suit == offSuit(game.trump):
 			# card is left bower
 			return card.num + 14
-		elif card.suit == game.lead.suit:
+		elif card.suit == game.lead:
 			return card.num
 		else:
 			return 0
