@@ -33,9 +33,13 @@ class Player():
 		for x in self.hand:
 			if x.num == 11:
 				if game.lead == game.trump and x.suit == offSuit(game.trump):
-					validmove.append(x)
+					validmoves.append(x)
 			elif x.suit == game.lead:
 				validmoves.append(x)
+	
+		if not validmoves:
+			validmoves = self.hand
+			
 		return tuple(validmoves)
 		
 	def setHand(self, hand):
@@ -48,6 +52,10 @@ class RandomPlay(Player):
 		
 	def playCard(self):
 		moves = self.validMoves()
+		print "Hand: "
+		print self.hand
+		print "Moves: "
+		print moves
 		chosen = random.choice(moves)
 		self.hand.remove(chosen)
 		return chosen

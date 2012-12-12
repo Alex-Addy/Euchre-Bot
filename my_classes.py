@@ -173,10 +173,10 @@ class Euchre():
 		
 	def pickSuitSec(self, out_suit):
 		for x in range(1, 5):
-			cur_player = self.players[(self.players.index(game.dealer)+x)%len(players)]
+			cur_player = self.players[(self.players.index(game.dealer)+x)%4]
 			picked = cur_player.pickSuit(out_suit)
 			if picked:
-				return (self.dealer+x)%len(players), picked
+				return (game.dealer+x)%4, picked
 			else:
 				pass # display that the player passed
 		return None

@@ -29,7 +29,7 @@ class Info:
 	def resetTrick(self):
 		self.lead = None
 		self.center = {}
-	   
+	
 	def resetRound(self):
 		self.trump = None
 		self.caller = None
