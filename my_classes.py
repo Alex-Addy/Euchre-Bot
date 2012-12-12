@@ -71,7 +71,7 @@ class Euchre():
 		game.center[played] = leader
 		
 		# handle the lead/left bower problem
-		if played.num = 11 and played.suit == offSuit(game.trump):
+		if played.num == 11 and played.suit == offSuit(game.trump):
 			game.lead = offSuit(game.trump)
 		else:
 			game.lead = played.suit
