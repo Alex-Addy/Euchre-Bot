@@ -150,12 +150,13 @@ class RealPlayer():
 	
 	def playCard(self):
 		self.printHand()
-		move = input("Please enter the # of the card you wish to play: ")
+		move = int(input("Please enter the # of the card you wish to play: "))
+		valid = self.validMoves()
 		while(True):
-			if move is int and 0 <= move < len(hand) and hand[move] in validMoves(self.hand, cur_trick):
+			if move is int and 0 <= move < len(hand) and hand[move] in :
 				return move
 			else:
-				move = input("Please enter a valid move: ")
+				move = int(input("Please enter a valid move: "))
 				
 	def updateInfo(self, winner):
 		print "The scores are A: %s, B %s" % (game.scoreA, game.scoreB)
@@ -165,11 +166,11 @@ class RealPlayer():
 	def orderUp(self, center_card):
 		self.printHand()
 		if self == game.dealer:
-			if query_yes_no("Do you want to pick up %s?" % center_card):
+			if query_yes_no("Do you want to pick up %s?" % (center_card)):
 				return True
-			
+
 		else:
-			return query_yes_no("Do you want to order the dealer up: %s?" % center_card)
+			return query_yes_no("Do you want to order the dealer up: %s?" % (center_card))
 
 	def pickSuit(self, out_suit):
 		pass
@@ -179,6 +180,4 @@ class RealPlayer():
 		pass
 		
 # playCard(self)
-# orderUp(self, center_card)
 # pickUp(self, card)
-# pickSuit(self, out_suit)
