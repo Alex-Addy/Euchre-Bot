@@ -47,7 +47,7 @@ class RandomPlay(Player):
 		self.BaseSetUp(name)
 		
 	def playCard(self):
-		moves = validMoves(self.hand, trick)
+		moves = self.validMoves()
 		chosen = random.choice(moves)
 		self.hand.remove(chosen)
 		return chosen
