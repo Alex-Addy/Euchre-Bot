@@ -1,5 +1,5 @@
-from my_classes import *
 from my_globals import *
+from my_classes import *
 import AIs
 
 def main():

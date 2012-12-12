@@ -40,7 +40,7 @@ class Euchre():
 		game.dealer = self.players[(self.players.index(game.dealer)+1)%4]
 
 	def playRound(self): # begins the next 5 tricks
-		self.resetRound()
+		game.resetRound()
 		self.rotateDeal()
 		self.dealCards()
 
@@ -63,7 +63,7 @@ class Euchre():
 		self.allotScore()
 
 	def playTrick(self, leader):
-		self.resetTrick()
+		game.resetTrick()
 		
 		# get the start card from leader
 		# assume cards played are legal
