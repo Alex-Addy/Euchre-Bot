@@ -14,7 +14,7 @@ def testAI(cur_ai):
 # Test that all AIs have the necessary functions
 testAI(AIs.RandomPlay("R"))
 print "RandomPlay is good."
-testAI(Ais.RealPlayer("RP"))
+testAI(AIs.RealPlayer("RP"))
 print "RealPlayer is good."
 testAI(AIs.SimpleStat("SS"))
 print "SimpleStat is good."

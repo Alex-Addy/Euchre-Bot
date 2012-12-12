@@ -93,4 +93,4 @@ def query_yes_no(question, default="yes"):
         elif choice in valid:
             return valid[choice]
         else:
-            print "Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
+            print "Please respond with 'yes' or 'no' (or 'y' or 'n').\n"

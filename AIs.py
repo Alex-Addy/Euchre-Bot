@@ -80,7 +80,7 @@ class RandomPlay(Player):
 		# not necessary for random play
 		pass
 
-class SimpleStat():
+class SimpleStat(Player):
 	def __init__(self, name):
 		self.BaseSetUp(name)
 		self.tfc = set(allcards) # tfc stands for total free cards
@@ -119,7 +119,7 @@ class SimpleStat():
 		"""
 		pass
 
-class SimpleRules():
+class SimpleRules(Player):
 	# this ai will use arbitrary rules created by us to play the game
 	# defaulting to random play when unsure
 	def __init__(self, name):
@@ -144,7 +144,7 @@ class SimpleRules():
 		"""
 		pass
 		
-class RealPlayer():
+class RealPlayer(Player):
 	def __init__(self, name):
 		self.BaseSetUp(name)
 	
@@ -161,7 +161,7 @@ class RealPlayer():
 	def updateInfo(self, winner):
 		print "The scores are A: %s, B %s" % (game.scoreA, game.scoreB)
 		print "The winner of the previous trick was %s" % (winner)
-		print "The center of the table is %s %s %s %s" % (*game.center.keys())
+		print "The center of the table is %s" % ", ".join(game.center.keys())
 
 	def orderUp(self, center_card):
 		self.printHand()
@@ -175,7 +175,7 @@ class RealPlayer():
 	def pickSuit(self, out_suit):
 		open_suits = (set(heart, spade, diamond, club) - set(out_suit))
 		if query_yes_no("Do you want to pick a suit? (out suit is %s)" % out_suit):
-			print "Pick %s, %s, or %s." % (*open_suits)
+			print "Pick %s, %s, or %s." % (open_suits[0], open_suits[1], open_suits[2])
 			
 			while True:
 				choice = raw_input("Enter the first letter of the suit name: ").lower()
