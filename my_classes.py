@@ -44,14 +44,6 @@ class Euchre():
 		self.rotateDeal()
 		self.deck = list(allcards[:])
 		self.dealCards()
-#		print self.playerA1.name
-#		print self.playerA1.hand
-#		print self.playerA2.name
-#		print self.playerA2.hand
-#		print self.playerB1.name
-#		print self.playerB1.hand
-#		print self.playerB2.name
-#		print self.playerB2.hand
 
 		# prepare for round
 		game.caller = self.orderUpDealerSec()
@@ -64,20 +56,13 @@ class Euchre():
 			# TODO
 			# stick the dealer
 			pass
-			
-#		print self.playerA1.name
-#		print self.playerA1.hand
-#		print self.playerA2.name
-#		print self.playerA2.hand
-#		print self.playerB1.name
-#		print self.playerB1.hand
-#		print self.playerB2.name
-#		print self.playerB2.hand
 		
 		# play 5 tricks
 		winner = self.players[(self.players.index(game.dealer) + 1)%4]
 		for x in range(5):
 			winner = self.playTrick(winner)
+			for p in self.players:
+				p.updateInfo(winner)
 		
 		self.allotScore()
 

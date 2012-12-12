@@ -31,19 +31,6 @@ class Player():
 		# assume that the lead, left bower problem is taken care of
 		validmoves = [] 
 		for x in self.hand:
-		
-#			try:
-#				if x.num == 11:
-#					if game.lead == game.trump and x.suit == offSuit(game.trump):
-#						validmoves.append(x)
-#				elif x.suit == game.lead:
-#					validmoves.append(x)
-#			except:
-#				print self.hand
-#				print self.name
-#				raise
-				
-		
 			if x.num == 11:
 				if game.lead == game.trump and x.suit == offSuit(game.trump):
 					validmoves.append(x)
@@ -169,9 +156,10 @@ class RealPlayer():
 			else:
 				move = input("Please enter a valid move: ")
 				
-	def updateInfo(self):
-		# not necessary for a real player
-		pass
+	def updateInfo(self, winner):
+		print "The scores are A: %s, B %s" % (game.scoreA, game.scoreB)
+		print "The winner of the previous trick was %s" % (winner)
+		print "The center of the table is %s %s %s %s" % (*game.center.keys())
 
 	def orderUp(self, center_card):
 		if self == dealer:
@@ -194,3 +182,10 @@ class RealPlayer():
 	def reset(self):
 		# not necessary for a real player
 		pass
+		
+# playCard(self)
+# orderUp(self, center_card)
+# pickUp(self, card)
+# pickSuit(self, out_suit)
+# reset(self)
+# setHand(self, new-hand)
