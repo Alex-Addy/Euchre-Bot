@@ -163,19 +163,13 @@ class RealPlayer():
 		print "The center of the table is %s %s %s %s" % (*game.center.keys())
 
 	def orderUp(self, center_card):
-		if self == dealer:
-			self.dealerPickUp(self, center_card) # is this what I want
-			
 		self.printHand()
-		while(True):
-			choice = raw_input("Do you want to order the dealer up? ")
-			choice = choice.lower()
-			if choice == "y" or choice == "yes":
+		if self == game.dealer:
+			if query_yes_no("Do you want to pick up %s?" % center_card):
 				return True
-			elif choice == "n" or choice == "no":
-				return False
-			else:
-				print("Please enter yes or no.")
+			
+		else:
+			return query_yes_no("Do you want to order the dealer up: %s?" % center_card)
 
 	def pickSuit(self, out_suit):
 		pass
