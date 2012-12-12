@@ -1,9 +1,9 @@
-# Collection of AI's each one should implement:
-# init(self, name)
-# playCard(self, cur_trick, trump)
-# updateInfo(self, finished_trick)
-# orderUp(self, center_card, dealer)
-# pickUp(self, center_card)
+# Collection of functions each AI should implement:
+# __init__(self, name)
+# playCard(self)
+# updateInfo(self)
+# orderUp(self, center_card)
+# pickUp(self, card)
 # pickSuit(self, out_suit)
 # reset(self)
 # setHand(self, new-hand)
@@ -11,23 +11,69 @@
 from my_globals import *
 
 import random
-random.seed(time)
+random.seed() # automatically uses system time
 
-class RandomPlay(BasePlayer):
+class Player():
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		self.BaseSetUp(name)
+		
+	def printHand(self):
+		for x in range(len(self.hand)):
+			print "[", x, ":", self.hand[x], "]",
+		print
+		
+	def BaseSetUp(self, name):
+		self.name = name # name is a unique identifier
+		self.tricks = 0
+		self.hand = []
+		
+	def validMoves(self):
+		# assume that the lead, left bower problem is taken care of
+		validmoves = [] 
+		for x in self.hand:
+		
+#			try:
+#				if x.num == 11:
+#					if game.lead == game.trump and x.suit == offSuit(game.trump):
+#						validmoves.append(x)
+#				elif x.suit == game.lead:
+#					validmoves.append(x)
+#			except:
+#				print self.hand
+#				print self.name
+#				raise
+				
+		
+			if x.num == 11:
+				if game.lead == game.trump and x.suit == offSuit(game.trump):
+					validmoves.append(x)
+			elif x.suit == game.lead:
+				validmoves.append(x)
+	
+		if not validmoves:
+			validmoves = self.hand
+			
+		return tuple(validmoves)
+		
+	def setHand(self, hand):
+		assert len(hand) == 5, "from setHand of %s, hand needs to be 5" % self.name
+		self.hand = hand
 
-	def playCard(self, cur_trick, trump):
-		moves = validMoves(self.hand, trick)
+class RandomPlay(Player):
+	def __init__(self, name):
+		self.BaseSetUp(name)
+		
+	def playCard(self):
+		moves = self.validMoves()
 		chosen = random.choice(moves)
 		self.hand.remove(chosen)
 		return chosen
 		
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		# not necessary for random play
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		return random.choice([True, False])
 
 	def pickSuit(self, out_suit):
@@ -35,6 +81,12 @@ class RandomPlay(BasePlayer):
 			return random.choice([x for x in [heart, spade, club, diamond] if x != out_suit])
 		else:
 			return None
+
+	def pickUp(self, top):
+		discard = random.choice(self.hand)
+		self.hand.remove(discard)
+		self.hand.append(top)
+		return discard
 		
 	def reset(self):
 		# not necessary for random play
@@ -42,20 +94,20 @@ class RandomPlay(BasePlayer):
 
 class SimpleStat():
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		self.BaseSetUp(name)
 		self.tfc = set(allcards) # tfc stands for total free cards
 		self.partner = set(allcards)
 		self.opp1 = set(allcards)
 		self.opp2 = set(allcards)
 		
 	def setHand(self, hand):
-		super(BasePlayer, self).setHand(hand)
+		super(Player, self).setHand(hand)
 		self.tfc -= set(self.hand)
 	
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		pass
 
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		assert len(finished_trick.center) == 4, "there should be four cards in the center"
 		self.tfc -= set(finished_trick.center.keys())
 		
@@ -66,7 +118,7 @@ class SimpleStat():
 		lead_set = set([x for x in allcards if x.suit == heart])
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		pass
 
 	def pickSuit(self, out_suit):
@@ -75,7 +127,7 @@ class SimpleStat():
 	def reset(self):
 		"""Reset the information gathered by the ai without reinstatiating it.
 		
-			For use between rounds.
+			For use between rounds. Useful for those that need to keep their statistics.
 		"""
 		pass
 
@@ -83,15 +135,15 @@ class SimpleRules():
 	# this ai will use arbitrary rules created by us to play the game
 	# defaulting to random play when unsure
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		self.BaseSetUp(name)
 		
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		pass
 
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		pass
 
 	def pickSuit(self, out_suit):
@@ -106,9 +158,9 @@ class SimpleRules():
 		
 class RealPlayer():
 	def __init__(self, name):
-		super(BasePlayer, self).__init__(name)
+		self.BaseSetUp(name)
 	
-	def playCard(self, cur_trick, trump):
+	def playCard(self):
 		self.printHand()
 		move = input("Please enter the # of the card you wish to play: ")
 		while(True):
@@ -117,11 +169,11 @@ class RealPlayer():
 			else:
 				move = input("Please enter a valid move: ")
 				
-	def updateInfo(self, finished_trick, trump):
+	def updateInfo(self):
 		# not necessary for a real player
 		pass
 
-	def orderUp(self, center_card, dealer):
+	def orderUp(self, center_card):
 		if self == dealer:
 			self.dealerPickUp(self, center_card) # is this what I want
 			
@@ -142,33 +194,3 @@ class RealPlayer():
 	def reset(self):
 		# not necessary for a real player
 		pass
-
-class BasePlayer():
-	def __init__(self, name):
-		self.name = name # name is a unique identifier
-		self.tricks = 0
-		self.hand = []
-		
-	def printHand(self):
-		for x in range(len(self.hand)):
-			print(x, ":", self.hand[x], end=" ")
-		print()
-		
-	def validMoves(self, trick, trump):
-		"""
-		Changing the lead suit to trump may cause issues to arise
-		"""
-		# assume that the lead, left bower problem is taken care of
-		validmoves = []
-		for x in hand:
-			if x.num == 11:
-				if lead == trump and x.suit == offSuit(trump):
-					validmove.append(x)
-			elif x.suit == lead:
-				validmoves.append(x)
-		return tuple(validmoves)
-		
-	def setHand(self, hand):
-		assert len(hand) == 5, "from setHand %s, hand needs to be 5" % self.name
-		self.hand = hand
-			
