@@ -31,6 +31,19 @@ class Player():
 		# assume that the lead, left bower problem is taken care of
 		validmoves = [] 
 		for x in self.hand:
+		
+#			try:
+#				if x.num == 11:
+#					if game.lead == game.trump and x.suit == offSuit(game.trump):
+#						validmoves.append(x)
+#				elif x.suit == game.lead:
+#					validmoves.append(x)
+#			except:
+#				print self.hand
+#				print self.name
+#				raise
+				
+		
 			if x.num == 11:
 				if game.lead == game.trump and x.suit == offSuit(game.trump):
 					validmoves.append(x)
@@ -52,10 +65,6 @@ class RandomPlay(Player):
 		
 	def playCard(self):
 		moves = self.validMoves()
-		print "Hand: "
-		print self.hand
-		print "Moves: "
-		print moves
 		chosen = random.choice(moves)
 		self.hand.remove(chosen)
 		return chosen

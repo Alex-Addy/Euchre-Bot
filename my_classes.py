@@ -43,18 +43,39 @@ class Euchre():
 		game.resetRound()
 		self.rotateDeal()
 		self.dealCards()
+#		print self.playerA1.name
+#		print self.playerA1.hand
+#		print self.playerA2.name
+#		print self.playerA2.hand
+#		print self.playerB1.name
+#		print self.playerB1.hand
+#		print self.playerB2.name
+#		print self.playerB2.hand
 
 		# prepare for round
 		game.caller = self.orderUpDealerSec()
 		if game.caller:
 			# TODO
 			# have dealer pick up and discard
-			game.dealer.pickUp(self.deck)
+			print game.dealer.name
+			print game.dealer.hand
+			game.dealer.pickUp(self.deck[0])
+			print game.dealer.hand
 		else:
 			game.caller, game.trump = self.pickSuitSec(self.deck[0].suit)
 			# TODO
 			# stick the dealer
 			pass
+			
+#		print self.playerA1.name
+#		print self.playerA1.hand
+#		print self.playerA2.name
+#		print self.playerA2.hand
+#		print self.playerB1.name
+#		print self.playerB1.hand
+#		print self.playerB2.name
+#		print self.playerB2.hand
+		
 		# play 5 tricks
 		winner = self.players[(self.players.index(game.dealer) + 1)%4]
 		for x in range(5):
@@ -176,7 +197,7 @@ class Euchre():
 			cur_player = self.players[(self.players.index(game.dealer)+x)%4]
 			picked = cur_player.pickSuit(out_suit)
 			if picked:
-				return (game.dealer+x)%4, picked
+				return self.player.index(game.dealer)%4, picked
 			else:
 				pass # display that the player passed
 		return None
