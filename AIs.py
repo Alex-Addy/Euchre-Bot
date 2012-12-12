@@ -150,9 +150,9 @@ class RealPlayer():
 	
 	def playCard(self):
 		self.printHand()
-		move = int(input("Please enter the # of the card you wish to play: "))
+		move = int(raw_input("Please enter the # of the card you wish to play: "))
 		valid = self.validMoves()
-		while(True):
+		while True:
 			if move is int and 0 <= move < len(hand) and hand[move] in :
 				return move
 			else:
@@ -173,11 +173,32 @@ class RealPlayer():
 			return query_yes_no("Do you want to order the dealer up: %s?" % (center_card))
 
 	def pickSuit(self, out_suit):
-		pass
+		open_suits = (set(heart, spade, diamond, club) - set(out_suit))
+		if query_yes_no("Do you want to pick a suit? (out suit is %s)" % out_suit):
+			print "Pick %s, %s, or %s." % (*open_suits)
+			
+			while True:
+				choice = raw_input("Enter the first letter of the suit name: ").lower()
+				if choice[0] == 'd':
+					if diamond in open_suits:
+						return diamond
+				elif choice[0] == 'h':
+					if heart in open_suits:
+						return heart
+				elif choice[0] == 's':
+					if spade in open_suits:
+						return spade
+				elif choice[0] == 'c':
+					if club in open_suits:
+						return club
+				else:
+					print "Please enter a valid choice."
+		else:
+			return False
 		
+	def pickUp(self, center_card):
+		pass
+	
 	def reset(self):
 		# not necessary for a real player
 		pass
-		
-# playCard(self)
-# pickUp(self, card)
