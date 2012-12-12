@@ -30,7 +30,7 @@ class Player():
 	def validMoves(self):
 		# assume that the lead, left bower problem is taken care of
 		validmoves = [] 
-		for x in hand:
+		for x in self.hand:
 			if x.num == 11:
 				if game.lead == game.trump and x.suit == offSuit(game.trump):
 					validmove.append(x)
