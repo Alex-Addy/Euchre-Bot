@@ -19,7 +19,7 @@ class Player():
 		
 	def printHand(self):
 		for x in range(len(self.hand)):
-			print "[", x, ":", self.hand[x], "]",
+			print "[%d: %s], " % (x, self.hand[x]),
 		print
 		
 	def BaseSetUp(self, name):
@@ -56,7 +56,7 @@ class RandomPlay(Player):
 		self.hand.remove(chosen)
 		return chosen
 		
-	def updateInfo(self):
+	def updateInfo(self, winner):
 		# not necessary for random play
 		pass
 
@@ -95,7 +95,7 @@ class SimpleStat(Player):
 	def playCard(self):
 		pass
 
-	def updateInfo(self):
+	def updateInfo(self, winner):
 		assert len(finished_trick.center) == 4, "there should be four cards in the center"
 		self.tfc -= set(finished_trick.center.keys())
 		
@@ -128,7 +128,7 @@ class SimpleRules(Player):
 	def playCard(self):
 		pass
 
-	def updateInfo(self):
+	def updateInfo(self, winner):
 		pass
 
 	def orderUp(self, center_card):
@@ -153,8 +153,9 @@ class RealPlayer(Player):
 		move = int(raw_input("Please enter the # of the card you wish to play: "))
 		valid = self.validMoves()
 		while True:
-			if move is int and 0 <= move < len(hand) and hand[move] in valid:
-				return move
+			if type(move) is int and 0 <= move < len(self.hand) and self.hand[move] in valid:
+				choice = self.hand.remove(move)
+				return choice
 			else:
 				move = int(input("Please enter a valid move: "))
 				
@@ -202,10 +203,11 @@ class RealPlayer(Player):
 		self.printHand()
 		
 		move = int(raw_input("Please enter the # of the card you wish to discard: "))
-		valid = self.validMoves()
 		while True:
-			if move is int and 0 <= move < len(hand) and hand[move] in valid:
-				return move
+			if type(move) is int and 0 <= move < len(self.hand):
+				choice = self.hand.remove(move)
+				self.hand.append(center_card)
+				return choice
 			else:
 				move = int(input("Please enter a valid discard: "))
 	

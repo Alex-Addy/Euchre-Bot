@@ -6,7 +6,7 @@ import random
 class Euchre():
 	def __init__(self):
 		# initialize AI's here
-		self.playerA1 = AIs.RandomPlay("Susan")
+		self.playerA1 = AIs.RealPlayer("Alex")
 		self.playerA2 = AIs.RandomPlay("Mary")
 		self.playerB1 = AIs.RandomPlay("Katrina")
 		self.playerB2 = AIs.RandomPlay("Sandy")

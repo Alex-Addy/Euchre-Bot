@@ -1,3 +1,5 @@
+# coding: utf-8
+
 if True: # black characters
 	heart = u"\u2665"
 	spade = u"\u2660"
