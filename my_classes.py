@@ -155,7 +155,7 @@ class Euchre():
 		out.log("With a score of %d to %d." % (game.scoreA, game.scoreB))
 		
 	def getWinningCard(self):
-		return sorted(game.center, key=self.curCardVal, reverse=True)[0]
+		return sorted(game.center, key=curCardVal, reverse=True)[0]
 	
 		# temp = [(x, self.curCardVal(x)) for x in game.center]
 		# best = temp[0][1]
@@ -167,22 +167,6 @@ class Euchre():
 				# best_x = x
 		
 		# return temp[x][0]
-		
-	def curCardVal(self, card):
-		# This might need to become a global function
-		if card.suit == game.trump:
-			if card.num == 11: # card is right bower
-				return card.num + 15
-			else:
-				return card.num + 10
-
-		elif card.num == 11 and card.suit == offSuit(game.trump):
-			# card is left bower
-			return card.num + 14
-		elif card.suit == game.lead:
-			return card.num
-		else:
-			return 0
 
 	def orderUpDealerSec(self):
 		deal_index = self.players.index(game.dealer)

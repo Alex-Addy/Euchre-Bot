@@ -81,7 +81,7 @@ class RandomPlay(Player):
 		pass
 
 class SimpleStat(Player):
-	def __init__(self, name, partner, opp1, opp2):
+	def __init__(self, name):
 		self.BaseSetUp(name)
 		
 		self.tfc = set(allcards) # tfc stands for total free cards
@@ -89,21 +89,28 @@ class SimpleStat(Player):
 		self.opp1m = set(allcards) # opponent 1 model
 		self.opp2m = set(allcards)
 		
-		self.partner = partner
-		self.opp1 = opp1
-		self.opp2 = opp2
+
 		
 	def setHand(self, hand):
 		Player.setHand(self, hand)
 		self.tfc -= set(self.hand)
-	
+		
+	def setPartner(self, partner, opp1, opp2)
+		self.partner = partner
+		self.opp1 = opp1
+		self.opp2 = opp2
+		
 	def playCard(self):
 		pass
 
 	def updateInfo(self, winner):
-		assert len(finished_trick.center) == 4, "there should be four cards in the center"
+		assert len(game.center) == 4, "there should be four cards in the center"
 		self.tfc -= set(finished_trick.center.keys())
-		pass
+		
+		for c, p in game.center.items():
+			if p == self: continue
+			if p != winner and p != self.partner:
+				
 
 	def orderUp(self, center_card):
 		pass

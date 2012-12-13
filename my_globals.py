@@ -108,3 +108,19 @@ def query_yes_no(question, default="yes"):
             return valid[choice]
         else:
             print "Please respond with 'yes' or 'no' (or 'y' or 'n').\n"
+			
+def curCardVal(card):
+		# This might need to become a global function
+		if card.suit == game.trump:
+			if card.num == 11: # card is right bower
+				return card.num + 15
+			else:
+				return card.num + 10
+
+		elif card.num == 11 and card.suit == offSuit(game.trump):
+			# card is left bower
+			return card.num + 14
+		elif card.suit == game.lead:
+			return card.num
+		else:
+			return 0
