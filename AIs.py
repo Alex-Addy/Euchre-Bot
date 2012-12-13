@@ -87,15 +87,13 @@ class SimpleStat(Player):
 		self.tfc = set(allcards) # tfc stands for total free cards
 		self.pm = set(allcards) # partner model
 		self.opp1m = set(allcards) # opponent 1 model
-		self.opp2m = set(allcards)
-		
-
+		self.opp2m = set(allcards) # opponent 2 model
 		
 	def setHand(self, hand):
 		Player.setHand(self, hand)
 		self.tfc -= set(self.hand)
 		
-	def setPartner(self, partner, opp1, opp2)
+	def setRelations(self, partner, opp1, opp2)
 		self.partner = partner
 		self.opp1 = opp1
 		self.opp2 = opp2
@@ -109,8 +107,12 @@ class SimpleStat(Player):
 		
 		for c, p in game.center.items():
 			if p == self: continue
-			if p != winner and p != self.partner:
+			
+			# if they lost then we can consider that they do not have any better cards in their hand
+			if self.opp1 != winner and self.opp2 != winner
 				
+			else:
+				pass
 
 	def orderUp(self, center_card):
 		pass

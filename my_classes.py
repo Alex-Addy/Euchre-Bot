@@ -13,6 +13,8 @@ class Euchre():
 
 		# make a list of the players for rotations
 		self.players = [self.playerA1, self.playerB1, self.playerA2, self.playerB2]
+		
+		self.playerA1.setRelations(self.playerA2, self.playerB1, self.playerB2)
 
 		self.deck = list(allcards[:]) # get a deep copy of all_cards for dealing
 
