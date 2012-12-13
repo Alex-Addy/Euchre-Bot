@@ -110,35 +110,95 @@ class SimpleStat(Player):
 		assert len(game.center) == 4, "there should be four cards in the center"
 		self.tfc -= set(finished_trick.center.keys())
 		
+		for c in game.center.keys();
+			if game.center[c] == winner:
+				win_card = c
+				break
+		
 		for c, p in game.center.items():
 			if p == self: continue
 			
 			# if they lost then we can consider that they do not have any better cards in their hand
-			if self.opp1 != winner and self.opp2 != winner
-				if 
+			if self.opp1 != winner and self.opp2 != winner:
+				if game.lead == win_card.suit:
+					if p == self.opp1:
+						self.opp1m -= self.suits[game.lead]
+					elif p == self.opp2:
+						self.opp2m -= self.suits[game.lead]
+						
+				else:
+					pass
 			else:
-				pass
+				if game.lead == win_card.suit:
+					self.pm -= self.suits[game.lead]
 
 	def orderUp(self, center_card):
-		pass
+		poss_powers = filter(lambda c: c.suit == center_card.suit, self.hand)
+		
+		if len(poss_powers) >= 3:
+			return True
+			
+		for c in self.hand:
+			if (c.suit == center_card.suit or c.suit == offSuit(center_card.suit)) and c.num == 11:
+				if len(poss_powers) >= 2:
+					return True
+		return False
 
 	def pickSuit(self, out_suit):
+		nums = { heart: 0, club : 0, spade : 0, diamond : 0 }
+		
+		for c in self.hand:
+			nums[c.suit] += 1
+				
 		pass
 
 	def pickUp(self, card):
-		pass
+		nums = { heart: 0, club : 0, spade : 0, diamond : 0 }
+		
+		for c in self.hand:
+			nums[c.suit] += 1
+		
+		d_suit = [] # suits to possibly discard
+		
+		for s, n in nums.items():
+			if n == 1 and s != card.suit:
+				d_suit.append(s)
+				
+		if not d_suit:	
+			for s, n in nums.items():
+				if n == 2 and s != card.suit:
+					d_suit.append(s)
+					break
+					
+		d_cards = [] # cards to consider for discard
+		
+		for c in self.hand:
+			if c.suit in d_suit:
+				d_cards.append(c)
+				
+		if len(d_cards) == 1: return d_cards[0]
+		elif len(d_cards) == 0:
+			try:
+				return random.choice(filter(lambda c: c.suit != card.suit, self.hand))
+			except IndexError:
+				# if that doesnt work then it doesn't matter because you have all the trump
+				return random.choice(self.hand)
+		else:
+			return random.choice(self.hand)
 
 	def reset(self):
 		"""Reset the information gathered by the ai without reinstatiating it.
 		
-			For use between rounds. Useful for those that need to keep their statistics.
+			For use between rounds.
 		"""
 		
+		self.tfc = set(allcards)
+		
 		# Jacks are a special case
-		self.hearts = set(filter(lambda c: c.suit == heart and c.num != 11, allcards))
-		self.spades = set(filter(lambda c: c.suit == spade and c.num != 11, allcards))
-		self.clubs = set(filter(lambda c: c.suit == club and c.num != 11, allcards))
-		self.diamonds = set(filter(lambda c: c.suit == diamond and c.num != 11, allcards))
+		self.suits = {heart:set(filter(lambda c: c.suit == heart and c.num != 11, allcards)),
+			spade:set(filter(lambda c: c.suit == spade and c.num != 11, allcards)),
+			club:set(filter(lambda c: c.suit == club and c.num != 11, allcards)),
+			diamond:set(filter(lambda c: c.suit == diamond and c.num != 11, allcards))}
 		
 	def trumpIsSet(self):
 		jacks = filter(lambda c: c.num == 11, allcards)
@@ -146,48 +206,23 @@ class SimpleStat(Player):
 		for c in jacks:
 			if c.suit == offSuit(game.trump):
 				if game.trump == heart:
-					self.hearts.add(c)
+					self.suits[heart].add(c)
 				elif game.trump == spade:
-					self.spades.add(c)
+					self.suits[spade].add(c)
 				elif game.trump == club:
-					self.clubs.add(c)
+					self.suits[club].add(c)
 				else:
-					self.diamonds.add(c)
+					self.suits[diamond].add(c)
 					
 			else:
 				if c.suit == heart:
-					self.hearts.add(c)
+					self.suits[heart].add(c)
 				elif c.suit == spade:
-					self.spades.add(c)
+					self.suits[spade].add(c)
 				elif c.suit == club:
-					self.clubs.add(c)
+					self.suits[club].add(c)
 				else:
-					self.diamonds.add(c)
-
-class SimpleRules(Player):
-	# this ai will use arbitrary rules created by us to play the game
-	# defaulting to random play when unsure
-	def __init__(self, name):
-		self.BaseSetUp(name)
-		
-	def playCard(self):
-		pass
-
-	def updateInfo(self, winner):
-		pass
-
-	def orderUp(self, center_card):
-		pass
-
-	def pickSuit(self, out_suit):
-		pass
-
-	def reset(self):
-		"""Reset the information gathered by the ai without reinstatiating it.
-		
-			For use between rounds.
-		"""
-		pass
+					self.suits[diamond].add(c)
 		
 class RealPlayer(Player):
 	def __init__(self, name):
