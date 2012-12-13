@@ -64,7 +64,7 @@ class RandomPlay(Player):
 		return random.choice([True, False])
 
 	def pickSuit(self, out_suit):
-		if random.choice([True, False]):
+		if random.choice([True, False]) or game.dealer == self:
 			return random.choice([x for x in [heart, spade, club, diamond] if x != out_suit])
 		else:
 			return None

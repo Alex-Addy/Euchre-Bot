@@ -6,8 +6,8 @@ import random
 class Euchre():
 	def __init__(self):
 		# initialize AI's here
-		self.playerA1 = AIs.SimpleStat("Alex")
-		self.playerA2 = AIs.RandomPlay("Mary")
+		self.playerA1 = AIs.RandomPlay("Alex")
+		self.playerA2 = AIs.RandomPlay("Brian")
 		self.playerB1 = AIs.RandomPlay("Katrina")
 		self.playerB2 = AIs.RandomPlay("Sandy")
 
@@ -50,7 +50,8 @@ class Euchre():
 		if game.caller:
 			# TODO
 			# have dealer pick up and discard
-			game.dealer.pickUp(self.deck[0])
+			game.trump = self.deck[0].suit
+			self.deck[0] = game.dealer.pickUp(self.deck[0])
 		else:
 			game.caller, game.trump = self.pickSuitSec(self.deck[0].suit)
 			# TODO
@@ -61,10 +62,16 @@ class Euchre():
 		winner = self.players[(self.players.index(game.dealer) + 1)%4]
 		for x in range(5):
 			winner = self.playTrick(winner)
+			keys = game.center.keys()
+			txt = "End of trick:\n\t%s, %s, %s, %s\n\tWinner:%s\n" % (keys[0], keys[1], keys[2], keys[3],winner.name)
+			out.log(txt)
 			for p in self.players:
 				p.updateInfo(winner)
-		
+				
 		self.allotScore()
+		out.log("End of round:\n\tTrump: %s\n\tCaller: %s\n\tScores A: %d B: %d\n" % \
+			(game.trump, game.caller.name, game.scoreA, game.scoreB))
+		
 
 	def playTrick(self, leader):
 		game.resetTrick()
@@ -87,24 +94,32 @@ class Euchre():
 			game.center[played] = self.players[(leader_index+x)%4]
 		
 		# return the winner of the trick
-		return game.center[self.getWinningCard()]
+		win_card = self.getWinningCard()
+		win_player = game.center[win_card]
+		if win_player == self.playerA1 or win_player == self.playerA2:
+			game.tricksA += 1
+		else:
+			game.tricksB += 1
+		return win_player
 		
 	def allotScore(self):
 		# simple rules used, no going alone
-		if self.players.index(game.caller) in (0, 2): # caller is in team A
+		if game.caller == self.playerA1 or game.caller == self.playerA2: # caller is in team A
 			c_team = "A"
 			c_tricks = game.tricksA
 		else:
 			c_tricks = game.tricksB
 			c_team = "B"
 			
+		out.log("\t\tCaller: %s  Tricks: A; %d B; %d C: %d" % (c_team, game.tricksA, game.tricksB, c_tricks))
+			
 		if c_tricks == 0:
-			if c_team == "A":
+			if c_team != "A":
 				game.scoreA += 4
 			else:
 				game.scoreB += 4
 		elif c_tricks == 1 or c_tricks == 2:
-			if c_team == "A":
+			if c_team != "A":
 				game.scoreA += 2
 			else:
 				game.scoreB += 2
@@ -140,19 +155,18 @@ class Euchre():
 		out.log("With a score of %d to %d." % (game.scoreA, game.scoreB))
 		
 	def getWinningCard(self):
-		# TEST THIS
 		return sorted(game.center, key=self.curCardVal, reverse=True)[0]
 	
-		temp = [(x, self.curCardVal(x)) for x in game.center]
-		best = temp[0][1]
-		bext_x = 0
+		# temp = [(x, self.curCardVal(x)) for x in game.center]
+		# best = temp[0][1]
+		# bext_x = 0
 	
-		for x in range(1, len(temp)):
-			if temp[x][1] > best:
-				best = temp[x][1]
-				best_x = x
+		# for x in range(1, len(temp)):
+			# if temp[x][1] > best:
+				# best = temp[x][1]
+				# best_x = x
 		
-		return temp[x][0]
+		# return temp[x][0]
 		
 	def curCardVal(self, card):
 		# This might need to become a global function
