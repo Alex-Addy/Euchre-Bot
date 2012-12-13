@@ -89,6 +89,8 @@ class SimpleStat(Player):
 		self.opp1m = set(allcards) # opponent 1 model
 		self.opp2m = set(allcards) # opponent 2 model
 		
+		self.reset()
+		
 	def setHand(self, hand):
 		Player.setHand(self, hand)
 		self.tfc -= set(self.hand)
@@ -128,7 +130,10 @@ class SimpleStat(Player):
 		
 			For use between rounds. Useful for those that need to keep their statistics.
 		"""
-		pass
+		self.hearts = set(filter(lambda c: c.suit == heart, allcards))
+		self.spades = set(filter(lambda c: c.suit == spade, allcards))
+		self.clubs = set(filter(lambda c: c.suit == club, allcards))
+		self.diamonds = set(filter(lambda c: c.suit == diamond, allcards))
 
 class SimpleRules(Player):
 	# this ai will use arbitrary rules created by us to play the game
