@@ -1,210 +1,340 @@
 End of trick:
-	Ace|♦, Jack|♦, 9|♥, 9|♦
-	Winner:Katrina
+	10|♦, Ace|♠, Jack|♥, Jack|♦
+	Winner:Sandy
 
 End of trick:
-	10|♠, King|♥, Queen|♠, King|♠
-	Winner:Katrina
-
-End of trick:
-	Ace|♥, King|♦, 10|♣, Jack|♥
-	Winner:Katrina
-
-End of trick:
-	Queen|♣, Queen|♦, King|♣, Jack|♣
+	Ace|♠, Queen|♣, 10|♣, 9|♣
 	Winner:Brian
 
 End of trick:
-	10|♥, Ace|♠, 9|♣, Jack|♠
-	Winner:Sandy
+	Ace|♦, King|♣, Queen|♦, King|♦
+	Winner:Katrina
 
-		Caller: B  Tricks: A; 1 B; 4 C: 4
+End of trick:
+	Queen|♠, Ace|♠, Ace|♥, 10|♠
+	Winner:Katrina
+
+End of trick:
+	Ace|♣, Jack|♣, Ace|♠, King|♠
+	Winner:Alex
+
+		Caller: B  Tricks: A; 2 B; 3 C: 3
 End of round:
 	Trump: ♦
 	Caller: Sandy
 	Scores A: 0 B: 1
 
 End of trick:
-	Ace|♥, Queen|♥, King|♥, King|♠
+	Ace|♣, 10|♦, Queen|♦, 9|♦
+	Winner:Brian
+
+End of trick:
+	10|♣, Queen|♣, 9|♣, 9|♠
+	Winner:Brian
+
+End of trick:
+	Queen|♠, Queen|♥, King|♠, 10|♠
 	Winner:Sandy
 
 End of trick:
-	10|♥, Jack|♣, Jack|♥, 9|♥
-	Winner:Sandy
-
-End of trick:
-	Queen|♣, 10|♣, 9|♣, Jack|♦
+	Ace|♣, 9|♥, Jack|♣, King|♣
 	Winner:Katrina
 
 End of trick:
-	Ace|♣, Queen|♠, Jack|♠, 10|♦
-	Winner:Sandy
+	Ace|♦, Jack|♥, Ace|♥, King|♥
+	Winner:Katrina
 
-End of trick:
-	Queen|♦, 10|♠, King|♦, Ace|♦
-	Winner:Sandy
-
-		Caller: A  Tricks: A; 0 B; 5 C: 0
-End of round:
-	Trump: ♦
-	Caller: Brian
-	Scores A: 0 B: 5
-
-End of trick:
-	Ace|♠, 10|♥, Ace|♥, Queen|♥
-	Winner:Sandy
-
-End of trick:
-	Queen|♣, 10|♣, 9|♣, 10|♦
-	Winner:Alex
-
-End of trick:
-	Queen|♦, Jack|♠, Ace|♦, Jack|♦
-	Winner:Alex
-
-End of trick:
-	Jack|♣, Queen|♠, 10|♠, 9|♠
-	Winner:Brian
-
-End of trick:
-	Ace|♣, Jack|♥, 9|♥, 9|♦
-	Winner:Brian
-
-		Caller: B  Tricks: A; 4 B; 1 C: 1
+		Caller: B  Tricks: A; 2 B; 3 C: 3
 End of round:
 	Trump: ♥
 	Caller: Sandy
-	Scores A: 2 B: 5
+	Scores A: 0 B: 2
 
 End of trick:
-	Queen|♦, King|♦, Queen|♥, 9|♦
+	Ace|♥, 10|♥, Jack|♥, Jack|♦
 	Winner:Sandy
 
 End of trick:
-	9|♠, King|♥, 9|♥, Jack|♦
-	Winner:Katrina
-
-End of trick:
-	10|♥, Queen|♣, Ace|♦, Jack|♥
-	Winner:Katrina
-
-End of trick:
-	Ace|♠, Queen|♠, Jack|♠, 10|♣
-	Winner:Katrina
-
-End of trick:
-	Ace|♥, Jack|♣, King|♠, 10|♠
-	Winner:Sandy
-
-		Caller: A  Tricks: A; 0 B; 5 C: 0
-End of round:
-	Trump: ♥
-	Caller: Alex
-	Scores A: 2 B: 9
-
-End of trick:
-	Ace|♠, Ace|♥, King|♥, Queen|♥
-	Winner:Brian
-
-End of trick:
-	Jack|♣, Queen|♠, 10|♠, Jack|♦
-	Winner:Sandy
-
-End of trick:
-	9|♠, King|♦, Queen|♦, 10|♦
-	Winner:Brian
-
-End of trick:
-	Queen|♣, 9|♣, King|♠, Ace|♣
+	10|♦, Ace|♥, Queen|♦, 9|♦
 	Winner:Alex
 
 End of trick:
-	9|♥, 10|♣, 9|♦, King|♣
-	Winner:Brian
+	10|♣, Ace|♣, Queen|♣, Queen|♥
+	Winner:Sandy
 
-		Caller: A  Tricks: A; 4 B; 1 C: 4
+End of trick:
+	Queen|♠, 9|♠, King|♠, King|♣
+	Winner:Sandy
+
+End of trick:
+	9|♥, 9|♣, Jack|♠, King|♦
+	Winner:Alex
+
+		Caller: B  Tricks: A; 2 B; 3 C: 3
 End of round:
-	Trump: ♣
-	Caller: Brian
-	Scores A: 3 B: 9
+	Trump: ♥
+	Caller: Katrina
+	Scores A: 0 B: 3
 
 End of trick:
-	Ace|♠, Queen|♠, King|♦, King|♠
+	Ace|♣, Queen|♠, King|♠, 9|♠
+	Winner:Alex
+
+End of trick:
+	10|♠, Ace|♠, King|♠, Ace|♥
+	Winner:Sandy
+
+End of trick:
+	King|♠, 10|♥, 10|♣, Queen|♦
 	Winner:Katrina
 
 End of trick:
-	Queen|♣, Ace|♣, 9|♣, Jack|♣
+	10|♦, Jack|♥, Jack|♣, Jack|♠
 	Winner:Brian
 
 End of trick:
-	Jack|♥, Jack|♦, 10|♠, 9|♠
+	Queen|♥, Queen|♣, 9|♦, King|♦
+	Winner:Sandy
+
+		Caller: B  Tricks: A; 2 B; 3 C: 3
+End of round:
+	Trump: ♥
+	Caller: Katrina
+	Scores A: 0 B: 4
+
+End of trick:
+	Queen|♣, 9|♥, King|♥, Jack|♦
+	Winner:Sandy
+
+End of trick:
+	King|♣, Ace|♣, Jack|♠, Queen|♦
 	Winner:Katrina
 
 End of trick:
-	Ace|♥, Queen|♦, 9|♦, 10|♦
+	Ace|♦, 10|♦, 9|♦, King|♦
+	Winner:Sandy
+
+End of trick:
+	9|♠, Ace|♠, 10|♣, 10|♠
+	Winner:Sandy
+
+End of trick:
+	Queen|♥, Jack|♣, 9|♣, Jack|♥
+	Winner:Brian
+
+		Caller: B  Tricks: A; 1 B; 4 C: 4
+End of round:
+	Trump: ♦
+	Caller: Katrina
+	Scores A: 0 B: 5
+
+End of trick:
+	Ace|♣, 9|♦, Jack|♣, 9|♣
+	Winner:Alex
+
+End of trick:
+	Queen|♥, 10|♥, 9|♥, Ace|♥
+	Winner:Alex
+
+End of trick:
+	Ace|♦, King|♣, Ace|♥, Queen|♦
+	Winner:Alex
+
+End of trick:
+	Queen|♠, Ace|♠, Ace|♥, Jack|♥
 	Winner:Brian
 
 End of trick:
-	10|♥, Queen|♥, Ace|♦, King|♥
+	Jack|♠, King|♠, 10|♠, Ace|♥
+	Winner:Alex
+
+		Caller: B  Tricks: A; 5 B; 0 C: 0
+End of round:
+	Trump: ♥
+	Caller: Katrina
+	Scores A: 4 B: 5
+
+End of trick:
+	9|♦, 10|♦, Queen|♥, Ace|♥
+	Winner:Katrina
+
+End of trick:
+	10|♣, Jack|♦, 10|♥, 9|♥
+	Winner:Sandy
+
+End of trick:
+	Ace|♦, Queen|♠, King|♦, Queen|♦
+	Winner:Alex
+
+End of trick:
+	Ace|♣, Ace|♠, King|♣, Queen|♣
 	Winner:Brian
+
+End of trick:
+	Jack|♠, Jack|♣, 9|♠, 9|♣
+	Winner:Sandy
+
+		Caller: B  Tricks: A; 2 B; 3 C: 3
+End of round:
+	Trump: ♠
+	Caller: Katrina
+	Scores A: 4 B: 6
+
+End of trick:
+	Queen|♠, 9|♥, Ace|♠, 9|♠
+	Winner:Alex
+
+End of trick:
+	10|♠, Ace|♠, Jack|♠, Jack|♥
+	Winner:Brian
+
+End of trick:
+	Ace|♦, King|♣, 10|♦, 9|♦
+	Winner:Katrina
+
+End of trick:
+	King|♦, 10|♥, 9|♣, Ace|♠
+	Winner:Brian
+
+End of trick:
+	Queen|♥, Jack|♣, Queen|♦, Jack|♦
+	Winner:Katrina
 
 		Caller: A  Tricks: A; 3 B; 2 C: 3
 End of round:
 	Trump: ♦
 	Caller: Brian
-	Scores A: 4 B: 9
+	Scores A: 5 B: 6
 
 End of trick:
-	10|♥, King|♣, Jack|♠, 9|♣
-	Winner:Brian
-
-End of trick:
-	Queen|♦, Queen|♠, 10|♣, Queen|♥
-	Winner:Brian
-
-End of trick:
-	9|♦, Jack|♣, King|♥, Jack|♥
-	Winner:Brian
-
-End of trick:
-	9|♠, King|♦, Jack|♦, 10|♦
+	Queen|♠, 10|♥, Queen|♥, King|♥
 	Winner:Alex
 
 End of trick:
-	King|♠, Ace|♠, Ace|♦, Ace|♣
+	10|♣, Ace|♠, Ace|♣, 9|♣
+	Winner:Alex
+
+End of trick:
+	10|♦, Jack|♦, Ace|♣, King|♣
+	Winner:Katrina
+
+End of trick:
+	Queen|♦, 9|♥, Ace|♥, Jack|♠
 	Winner:Brian
 
-		Caller: A  Tricks: A; 5 B; 0 C: 5
+End of trick:
+	Ace|♦, 9|♠, King|♠, 10|♠
+	Winner:Alex
+
+		Caller: A  Tricks: A; 4 B; 1 C: 4
 End of round:
-	Trump: ♣
-	Caller: Alex
-	Scores A: 6 B: 9
+	Trump: ♦
+	Caller: Brian
+	Scores A: 6 B: 6
 
 End of trick:
-	Ace|♠, Ace|♥, 10|♥, Queen|♥
-	Winner:Katrina
+	9|♥, 10|♥, King|♥, Ace|♥
+	Winner:Alex
 
 End of trick:
-	Queen|♣, King|♣, 10|♣, Jack|♣
+	Ace|♣, King|♣, Queen|♣, 10|♣
 	Winner:Brian
 
 End of trick:
-	Jack|♦, 9|♣, King|♠, 9|♦
-	Winner:Sandy
-
-End of trick:
-	9|♠, King|♦, 9|♥, 10|♦
-	Winner:Sandy
-
-End of trick:
-	Queen|♦, Jack|♠, Queen|♠, 10|♠
+	Ace|♦, King|♦, Jack|♦, 9|♣
 	Winner:Katrina
 
-		Caller: B  Tricks: A; 1 B; 4 C: 4
+End of trick:
+	Queen|♥, 9|♦, Queen|♦, Queen|♠
+	Winner:Alex
+
+End of trick:
+	Jack|♠, Jack|♣, Queen|♣, 9|♠
+	Winner:Katrina
+
+		Caller: A  Tricks: A; 3 B; 2 C: 3
+End of round:
+	Trump: ♠
+	Caller: Brian
+	Scores A: 7 B: 6
+
+End of trick:
+	Queen|♦, 10|♥, 9|♥, King|♥
+	Winner:Sandy
+
+End of trick:
+	Jack|♣, King|♠, Jack|♠, 9|♦
+	Winner:Brian
+
+End of trick:
+	Queen|♠, Jack|♥, Ace|♥, Jack|♦
+	Winner:Sandy
+
+End of trick:
+	9|♣, Ace|♣, King|♦, King|♣
+	Winner:Sandy
+
+End of trick:
+	10|♦, 9|♠, 10|♣, Ace|♦
+	Winner:Sandy
+
+		Caller: A  Tricks: A; 1 B; 4 C: 1
 End of round:
 	Trump: ♥
+	Caller: Alex
+	Scores A: 7 B: 8
+
+End of trick:
+	10|♥, Queen|♥, Ace|♥, King|♥
+	Winner:Brian
+
+End of trick:
+	King|♠, Queen|♣, Ace|♣, King|♣
+	Winner:Sandy
+
+End of trick:
+	Jack|♣, Ace|♠, King|♦, 9|♦
+	Winner:Alex
+
+End of trick:
+	Ace|♦, 10|♠, Queen|♥, 9|♠
+	Winner:Katrina
+
+End of trick:
+	Queen|♦, 9|♣, Queen|♠, Jack|♠
+	Winner:Sandy
+
+		Caller: B  Tricks: A; 2 B; 3 C: 3
+End of round:
+	Trump: ♠
 	Caller: Katrina
-	Scores A: 6 B: 10
+	Scores A: 7 B: 9
+
+End of trick:
+	9|♠, Ace|♠, King|♠, Queen|♣
+	Winner:Sandy
+
+End of trick:
+	Queen|♥, Ace|♥, Queen|♦, 10|♠
+	Winner:Alex
+
+End of trick:
+	Ace|♣, Ace|♦, 9|♣, King|♣
+	Winner:Alex
+
+End of trick:
+	King|♥, 10|♥, 9|♥, Ace|♦
+	Winner:Katrina
+
+End of trick:
+	10|♣, Queen|♠, Jack|♣, Jack|♥
+	Winner:Sandy
+
+		Caller: A  Tricks: A; 2 B; 3 C: 2
+End of round:
+	Trump: ♥
+	Caller: Brian
+	Scores A: 7 B: 11
 
 Players Katrina and Sandy have won!
-With a score of 6 to 10.
+With a score of 7 to 11.

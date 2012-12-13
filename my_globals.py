@@ -18,7 +18,7 @@ class Logger:
 		self.the_log = codecs.open(logging_file, encoding='utf-8', mode='w')
 		
 	def log(self, info):
-		self.the_log.write(info)
+		self.the_log.write(info.replace('\n', '\r\n'))
 		self.the_log.write('\r\n')
 		
 out = Logger("log.txt")

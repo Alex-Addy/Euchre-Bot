@@ -98,19 +98,37 @@ class SimpleStat(Player):
 		Player.setHand(self, hand)
 		self.tfc -= set(self.hand)
 		
-	def setRelations(self, partner, opp1, opp2)
+	def setRelations(self, partner, opp1, opp2):
 		self.partner = partner
 		self.opp1 = opp1
 		self.opp2 = opp2
 		
 	def playCard(self):
-		pass
+		poss_opp_cards = self.tfc & (self.opp2m | self.opp1m)
+		
+		poss_par_cards = self.tfc & self.pm
+		
+		valids = self.validMoves()
+		
+		if len(valids) == 1:
+			self.hand.remove(valids[0])
+			return valids[0]
+			
+		if game.center:
+			if len(poss_opp_cards & self.suits[game.lead]) < 3:
+				choice = random.choice(self.hand)
+				self.hand.remove(choice)
+				return choice
+				
+		return sorted(self.hand, key=lambda c: c.num, reverse=True)[0]
+			
+			
 
 	def updateInfo(self, winner):
 		assert len(game.center) == 4, "there should be four cards in the center"
-		self.tfc -= set(finished_trick.center.keys())
+		self.tfc -= set(game.center.keys())
 		
-		for c in game.center.keys();
+		for c in game.center.keys():
 			if game.center[c] == winner:
 				win_card = c
 				break
