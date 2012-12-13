@@ -6,7 +6,7 @@ import random
 class Euchre():
 	def __init__(self):
 		# initialize AI's here
-		self.playerA1 = AIs.RealPlayer("Alex")
+		self.playerA1 = AIs.SimpleStat("Alex")
 		self.playerA2 = AIs.RandomPlay("Mary")
 		self.playerB1 = AIs.RandomPlay("Katrina")
 		self.playerB2 = AIs.RandomPlay("Sandy")
@@ -130,11 +130,15 @@ class Euchre():
 			return False
 
 	def endGame(self): # ends the game
-		pass
+		if game.scoreA >= 10:
+			print "Players %s and %s have won!" % (self.playerA1.name, self.playerA2.name)
+		elif game.scoreB >= 10:
+			print "Players %s and %s have won!" % (self.playerB1.name, self.playerB2.name)
+		print "With a score of %d to %d." % (game.scoreA, game.scoreB)
 		
 	def getWinningCard(self):
 		# TEST THIS
-		#return sorted(game.center, key=self.curCardVal, reverse=True)[0]
+		return sorted(game.center, key=self.curCardVal, reverse=True)[0]
 	
 		temp = [(x, self.curCardVal(x)) for x in game.center]
 		best = temp[0][1]

@@ -13,7 +13,7 @@ from my_globals import *
 import random
 random.seed() # automatically uses system time
 
-class Player():
+class Player(object):
 	def __init__(self, name):
 		self.BaseSetUp(name)
 		
@@ -89,7 +89,7 @@ class SimpleStat(Player):
 		self.opp2 = set(allcards)
 		
 	def setHand(self, hand):
-		super(Player, self).setHand(hand)
+		Player.setHand(self, hand)
 		self.tfc -= set(self.hand)
 	
 	def playCard(self):
@@ -110,6 +110,9 @@ class SimpleStat(Player):
 		pass
 
 	def pickSuit(self, out_suit):
+		pass
+
+	def pickUp(self, card):
 		pass
 
 	def reset(self):
