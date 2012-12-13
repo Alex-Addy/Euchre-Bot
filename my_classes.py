@@ -132,9 +132,12 @@ class Euchre():
 	def endGame(self): # ends the game
 		if game.scoreA >= 10:
 			print "Players %s and %s have won!" % (self.playerA1.name, self.playerA2.name)
+			out.log("Players %s and %s have won!" % (self.playerA1.name, self.playerA2.name))
 		elif game.scoreB >= 10:
 			print "Players %s and %s have won!" % (self.playerB1.name, self.playerB2.name)
+			out.log("Players %s and %s have won!" % (self.playerB1.name, self.playerB2.name))
 		print "With a score of %d to %d." % (game.scoreA, game.scoreB)
+		out.log("With a score of %d to %d." % (game.scoreA, game.scoreB))
 		
 	def getWinningCard(self):
 		# TEST THIS
