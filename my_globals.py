@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding:utf-8
 
 if True: # black characters
 	heart = u"\u2665"
@@ -10,7 +10,17 @@ else: # white characters
 	spade = u"\u2664"
 	diamond = u"\u2662"
 	club = u"\u2667"
-	
+
+class Logger:
+	def __init__(self, logging_file):
+		self.log = open(logging_file, 'w')
+		
+	def log(self, info):
+		self.log.write(info)
+		self.log.write('\n')
+		
+out = Logger()
+
 class Info:
 	def __init__(self):
 		# trick level
@@ -29,10 +39,14 @@ class Info:
 		self.scoreB  = 0
 
 	def resetTrick(self):
+		keys = game.center.keys()
+		out.log("End of trick:\n\t%s, %s, %s, %s\n" % (keys[0], keys[1], keys[2], keys[3]))
 		self.lead = None
 		self.center = {}
 	
 	def resetRound(self):
+		out.log("End of round:\n\tTrump: %s\n\tCaller: %s\n\tScores A: %d B: %d\n" % \
+			(self.trump, self.caller.name, self.scoreA, self.scoreB))
 		self.trump = None
 		self.caller = None
 		self.tricksA = 0
