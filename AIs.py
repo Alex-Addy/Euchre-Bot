@@ -45,6 +45,9 @@ class Player(object):
 	def setHand(self, hand):
 		assert len(hand) == 5, "from setHand of %s, hand needs to be 5" % self.name
 		self.hand = hand
+		
+	def trumpIsSet(self):
+		pass
 
 class RandomPlay(Player):
 	def __init__(self, name):
@@ -112,7 +115,7 @@ class SimpleStat(Player):
 			
 			# if they lost then we can consider that they do not have any better cards in their hand
 			if self.opp1 != winner and self.opp2 != winner
-				
+				if 
 			else:
 				pass
 
@@ -130,10 +133,36 @@ class SimpleStat(Player):
 		
 			For use between rounds. Useful for those that need to keep their statistics.
 		"""
-		self.hearts = set(filter(lambda c: c.suit == heart, allcards))
-		self.spades = set(filter(lambda c: c.suit == spade, allcards))
-		self.clubs = set(filter(lambda c: c.suit == club, allcards))
-		self.diamonds = set(filter(lambda c: c.suit == diamond, allcards))
+		
+		# Jacks are a special case
+		self.hearts = set(filter(lambda c: c.suit == heart and c.num != 11, allcards))
+		self.spades = set(filter(lambda c: c.suit == spade and c.num != 11, allcards))
+		self.clubs = set(filter(lambda c: c.suit == club and c.num != 11, allcards))
+		self.diamonds = set(filter(lambda c: c.suit == diamond and c.num != 11, allcards))
+		
+	def trumpIsSet(self):
+		jacks = filter(lambda c: c.num == 11, allcards)
+		
+		for c in jacks:
+			if c.suit == offSuit(game.trump):
+				if game.trump == heart:
+					self.hearts.add(c)
+				elif game.trump == spade:
+					self.spades.add(c)
+				elif game.trump == club:
+					self.clubs.add(c)
+				else:
+					self.diamonds.add(c)
+					
+			else:
+				if c.suit == heart:
+					self.hearts.add(c)
+				elif c.suit == spade:
+					self.spades.add(c)
+				elif c.suit == club:
+					self.clubs.add(c)
+				else:
+					self.diamonds.add(c)
 
 class SimpleRules(Player):
 	# this ai will use arbitrary rules created by us to play the game

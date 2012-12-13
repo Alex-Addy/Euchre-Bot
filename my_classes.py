@@ -27,6 +27,8 @@ class Euchre():
 		# iterative instead of recursive
 		while not self.hasWinner():
 			self.playRound()
+			for p in self.players:
+				p.reset()
 		self.endGame()
 
 	def dealCards(self):
@@ -59,6 +61,9 @@ class Euchre():
 			# TODO
 			# stick the dealer
 			pass
+			
+		for p in self.players:
+			p.trumpIsSet()
 		
 		# play 5 tricks
 		winner = self.players[(self.players.index(game.dealer) + 1)%4]
