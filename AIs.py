@@ -150,7 +150,11 @@ class SimpleStat(Player):
 		for c in self.hand:
 			nums[c.suit] += 1
 				
-		pass
+		for s, n in nums.items():
+			if n >= 3:
+				return s
+		
+		return None
 
 	def pickUp(self, card):
 		nums = { heart: 0, club : 0, spade : 0, diamond : 0 }
